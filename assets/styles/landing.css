@@ -5,10 +5,12 @@
     --txt-color: black;
     --task-color: white;
     --sub-task-color:  rgba(0, 0, 0, 0.387);
+    --box-shadow: 2px 2px 2px #aaaaaa;
     --bg-color-light: rgb(227, 247, 246);
     --txt-color-light: black;
     --task-color-light: white;
-    --sub-task-color-light:  rgba(255, 255, 255, 0.41);
+    --sub-task-color-light:  rgba(0, 0, 0, 0.387);
+    --box-shadow-light: 3px 3px 2px #aaaaaa;
     --bg-: rgb(40, 40, 74);
     --txt: rgb(255, 255, 255);
     --tax: rgb(51, 51, 92);
@@ -27,6 +29,7 @@ body {
     color: white;
     border-radius: 15px;
     padding: 3px;
+    box-shadow: var(--box-shadow);
 }
 
 /* header styles */
@@ -46,7 +49,7 @@ header h1 {
 }
 
 header p.newTask {
-    margin: auto 2px;
+    margin: auto 8px;
     cursor: pointer;
 }
 
@@ -137,7 +140,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    
+    box-shadow: var(--box-shadow);
 }
 .task_aside1 .fa-circle {
     color:rgb(106, 185, 246);
@@ -147,7 +150,7 @@ a:hover {
     color: var(--mov_color);
 }
 .task_aside3 .fa-circle {
-    color: rgb(19, 85, 19);
+    color: rgb(114, 227, 114);
 }
 
 .task .task_head {
