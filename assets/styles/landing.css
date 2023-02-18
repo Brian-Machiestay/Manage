@@ -47,11 +47,15 @@ header p.newTask {
 }
 
 /* side bar styles */
+.sidebar_section {
+    display: flex;
+}
 .side_bar {
     width: 250px;
     margin-top: -50px;
     opacity: 1;
     height: 100vh;
+    border-right: 1px solid rgba(250, 250, 250, 0.085);
 }
 .list-group {
     height: 100%;
@@ -64,6 +68,7 @@ header p.newTask {
     background-color: rgb(51, 51, 92);
     color: white;
     border: none;
+    cursor: pointer;
 }
 a:hover {
     text-decoration: none;
