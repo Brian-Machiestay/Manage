@@ -1,0 +1,33 @@
+/* General styles */
+:root {
+    --mov_color: rgb(123, 123, 223);
+    --bg-color: rgb(14, 14, 34);
+    --txt-color: rgb(255, 255, 255);
+}
+
+/* new task design */
+.newTask {
+    background-color: var(--mov_color);
+    border-radius: 15px;
+    padding: 3px;
+}
+
+/* header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    background-color: var(--bg-color);
+    color: var(--txt-color);
+}
+
+header h1 {
+    font-size: 20pt;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: auto 2px;
+}
+
+header p.newTask {
+    margin: auto 2px;
+}
