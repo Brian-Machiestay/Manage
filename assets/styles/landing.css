@@ -1,10 +1,14 @@
 /* General styles */
 :root {
     --mov_color: rgb(123, 123, 223);
-    --bg-color: rgb(14, 14, 34);
+    --bg-color: rgb(40, 40, 74);
     --txt-color: rgb(255, 255, 255);
 }
 
+/* body styles */
+body {
+    background-color: var(--bg-color);
+}
 /* new task design */
 .newTask {
     background-color: var(--mov_color);
@@ -17,7 +21,7 @@ header {
     display: flex;
     justify-content: space-between;
     height: 50px;
-    background-color: var(--bg-color);
+    background-color: rgb(51, 51, 92);
     color: var(--txt-color);
 }
 
@@ -40,4 +44,22 @@ header p.newTask {
 }
 .logo .logo_item1 {
     margin-right: 4px;
+}
+
+/* side bar styles */
+.side_bar {
+    width: 250px;
+    margin-top: -50px;
+    opacity: 1;
+    height: 100vw;
+}
+.list-group {
+    height: 100vw;
+    background-color: rgb(51, 51, 92);;
+}
+.list-group .last {
+    margin-top: auto;
+}
+.list-group-item {
+    background-color: rgb(51, 51, 92);
 }
