@@ -1,10 +1,20 @@
 /* General styles */
 :root {
     --mov_color: rgb(123, 123, 223);
-    --bg-color: rgb(40, 40, 74);
-    --txt-color: rgb(255, 255, 255);
-    --task-color: rgb(51, 51, 92);
-    --sub-task-color:  rgba(255, 255, 255, 0.41); 
+    --bg-color: rgb(227, 247, 246);
+    --txt-color: black;
+    --task-color: white;
+    --sub-task-color:  rgba(0, 0, 0, 0.387);
+    --bg-color-light: rgb(227, 247, 246);
+    --txt-color-light: black;
+    --task-color-light: white;
+    --sub-task-color-light:  rgba(255, 255, 255, 0.41);
+    --bg-: rgb(40, 40, 74);
+    --txt: rgb(255, 255, 255);
+    --tax: rgb(51, 51, 92);
+    --sub: rgba(255, 255, 255, 0.41);
+    --mov: rgb(123, 123, 223);
+    --sidebar-border: 1px solid rgba(193, 190, 190, 0.664);
 }
   
 /* body styles */
@@ -14,6 +24,7 @@ body {
 /* new task design */
 .newTask {
     background-color: var(--mov_color);
+    color: white;
     border-radius: 15px;
     padding: 3px;
 }
@@ -62,7 +73,7 @@ header p.newTask {
     margin-top: -50px;
     opacity: 1;
     height: 100vh;
-    border-right: 1px solid rgba(250, 250, 250, 0.085);
+    border-right: var(--sidebar-border)
 }
 
 .list-group {
@@ -126,6 +137,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    
 }
 .task_aside1 .fa-circle {
     color:rgb(106, 185, 246);
@@ -138,8 +150,9 @@ a:hover {
     color: rgb(19, 85, 19);
 }
 
-.task p {
+.task .task_head {
     color: var(--txt-color);
+    font-weight: bold;
 }
 .task .subtask_status {
     color: var(--sub-task-color);
