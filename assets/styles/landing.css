@@ -96,12 +96,26 @@ a:hover {
 /* task aside styles */
 .task_aside {
     margin-left: 10px;
+    display: flex;
+}
+
+.task_aside-item {
+    margin-right: 20px;
 }
 
 /* styles for each task */
 .task {
+    min-width: 200px;
+    max-width: 230px;
+    max-height: 100px;
+    height: 90px;
+    padding: 10px;
+    margin-bottom: 10px;
     background-color: rgb(51, 51, 92);
-
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
 }
 .fa-circle {
     color:rgb(106, 185, 246)
