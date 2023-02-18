@@ -4,8 +4,9 @@
     --bg-color: rgb(40, 40, 74);
     --txt-color: rgb(255, 255, 255);
     --task-color: rgb(51, 51, 92);
+    --sub-task-color:  rgba(255, 255, 255, 0.41); 
 }
-
+  
 /* body styles */
 body {
     background-color: var(--bg-color);
@@ -63,6 +64,7 @@ header p.newTask {
     height: 100vh;
     border-right: 1px solid rgba(250, 250, 250, 0.085);
 }
+
 .list-group {
     height: 100%;
     background-color: var(--task-color);
@@ -139,6 +141,9 @@ a:hover {
 .task p {
     color: var(--txt-color);
 }
+.task .subtask_status {
+    color: var(--sub-task-color);
+}
 aside p {
-    color: rgba(255, 255, 255, 0.41);
+    color: var(--sub-task-color);
 }
