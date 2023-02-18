@@ -7,6 +7,7 @@ function changeTheme(event) {
          root.css('--task-color', 'rgb(51, 51, 92)');
          root.css('--sub-task-color', 'rgba(255, 255, 255, 0.41)');
          root.css('--box-shadow', '2px 2px 2px rgba(0, 0, 0, 0.387)');
+         root.css('--sidebar-border', '1px solid rgba(242, 237, 237, 0.12)');
     }
     else {
         root.css('--mov_color', 'rgb(99, 99, 236)');
@@ -15,6 +16,7 @@ function changeTheme(event) {
         root.css('--task-color', 'white');
         root.css('--sub-task-color', 'rgba(0, 0, 0, 0.387)');
         root.css('--box-shadow', '3px 3px 2px #aaaaaaa0');
+        root.css('--sidebar-border', '1px solid rgba(242, 237, 237, 0.571)');
     }
 }
 
