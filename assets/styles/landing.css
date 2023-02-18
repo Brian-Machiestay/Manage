@@ -1,6 +1,6 @@
 /* General styles */
 :root {
-    --mov_color: rgb(123, 123, 223);
+    --mov_color: rgb(99, 99, 236);
     --bg-color: rgb(227, 247, 246);
     --txt-color: black;
     --task-color: white;
@@ -10,6 +10,7 @@
     --txt-color-light: black;
     --task-color-light: white;
     --sub-task-color-light:  rgba(0, 0, 0, 0.387);
+    --mov_color-light: rgb(99, 99, 236);
     --box-shadow-light: 3px 3px 2px #aaaaaa;
     --bg-: rgb(40, 40, 74);
     --txt: rgb(255, 255, 255);
