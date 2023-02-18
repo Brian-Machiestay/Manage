@@ -69,3 +69,9 @@ a:hover {
     text-decoration: none;
     color: white;
 }
+.list-group .logo_item1 {
+    font-size: 20pt;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: auto 2px;
+}
