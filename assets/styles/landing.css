@@ -105,10 +105,10 @@ a:hover {
 
 /* styles for each task */
 .task {
-    min-width: 200px;
+    min-width: 270px;
     max-width: 230px;
     max-height: 100px;
-    height: 90px;
+    height: 80px;
     padding: 10px;
     margin-bottom: 10px;
     background-color: rgb(51, 51, 92);
@@ -117,10 +117,20 @@ a:hover {
     flex-direction: column;
     cursor: pointer;
 }
-.fa-circle {
-    color:rgb(106, 185, 246)
+.task_aside1 .fa-circle {
+    color:rgb(106, 185, 246);
 }
 
-p {
-    color: white;
+.task_aside2 .fa-circle {
+    color: var(--mov_color);
+}
+.task_aside3 .fa-circle {
+    color: rgb(19, 85, 19);
+}
+
+.task p {
+    color: rgb(255, 255, 255);
+}
+aside p {
+    color: rgba(255, 255, 255, 0.41);
 }
