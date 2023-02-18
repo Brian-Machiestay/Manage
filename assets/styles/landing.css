@@ -5,19 +5,19 @@
     --txt-color: black;
     --task-color: white;
     --sub-task-color:  rgba(0, 0, 0, 0.387);
-    --box-shadow: 2px 2px 2px #aaaaaa;
+    --box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.387);
     --bg-color-light: rgb(227, 247, 246);
     --txt-color-light: black;
     --task-color-light: white;
     --sub-task-color-light:  rgba(0, 0, 0, 0.387);
     --mov_color-light: rgb(99, 99, 236);
-    --box-shadow-light: 3px 3px 2px #aaaaaa;
+    --box-shadow-light: 3px 3px 2px #aaaaaaa0;
     --bg-: rgb(40, 40, 74);
     --txt: rgb(255, 255, 255);
     --tax: rgb(51, 51, 92);
     --sub: rgba(255, 255, 255, 0.41);
     --mov: rgb(123, 123, 223);
-    --sidebar-border: 1px solid rgba(193, 190, 190, 0.664);
+    --sidebar-border: 1px solid rgba(242, 237, 237, 0.12);
 }
   
 /* body styles */
