@@ -31,3 +31,12 @@ header h1 {
 header p.newTask {
     margin: auto 2px;
 }
+
+.logo {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+}
+.logo .logo_item1 {
+    margin-right: 4px;
+}
