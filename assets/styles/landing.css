@@ -51,10 +51,10 @@ header p.newTask {
     width: 250px;
     margin-top: -50px;
     opacity: 1;
-    height: 100vw;
+    height: 100vh;
 }
 .list-group {
-    height: 100vw;
+    height: 100%;
     background-color: rgb(51, 51, 92);;
 }
 .list-group .last {
@@ -62,4 +62,10 @@ header p.newTask {
 }
 .list-group-item {
     background-color: rgb(51, 51, 92);
+    color: white;
+    border: none;
+}
+a:hover {
+    text-decoration: none;
+    color: white;
 }
