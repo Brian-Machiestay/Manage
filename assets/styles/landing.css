@@ -184,3 +184,17 @@ a:hover {
 aside p {
     color: var(--sub-task-color);
 }
+
+/* viewTask modal styles override */
+#viewTaskWindow .modal-dialog .modal-content {
+    background-color: var(--bg-color);
+}
+.modal-header, .modal-body, .modal-footer {
+    border: none;
+}
+#viewTaskWindow .modal-body textarea, #viewTaskWindow .modal-body textarea:focus {
+    width: 100%;
+    background-color: var(--task-color);
+    color: var(--txt-color);
+    border: none;
+}
