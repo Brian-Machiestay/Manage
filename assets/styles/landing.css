@@ -134,6 +134,7 @@ a:hover {
 .showbar #show {
     color: var(--mov_color);
     margin-bottom: auto;
+    cursor: pointer;
 }
 
 /* task aside styles */

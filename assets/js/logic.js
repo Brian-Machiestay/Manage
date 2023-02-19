@@ -24,17 +24,23 @@ function changeTheme(event) {
     }
 }
 
-// hide and show sidebar
+// hide show sidebar
 function hideSidebar() {
-    const hide = $('#hide');
     $('.side_bar').css('display', 'none');
-    hide.addClass('');
     $('.showbar').css('display', 'block');
+}
+
+function showSidebar() {
+    $('.side_bar').css('display', 'block');
+    $('.showbar').css('display', 'none');
 }
 
 
 // toggles the theme between dark and light mode
 $('.fa-toggle-on, .fa-toggle-off').click(changeTheme);
 
-// attach an event listender to the hide sidebar icon
+// attach an event listener to the hide sidebar icon
 $('#hide').click(hideSidebar);
+
+// attach an event listener to show the sidebar
+$('#show').click(showSidebar);
