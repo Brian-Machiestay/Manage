@@ -44,3 +44,5 @@ $('#hide').click(hideSidebar);
 
 // attach an event listener to show the sidebar
 $('#show').click(showSidebar);
+
+$('.newTask')
