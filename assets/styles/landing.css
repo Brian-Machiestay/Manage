@@ -121,6 +121,20 @@ a:hover {
     color: var(--mov_color);
 }
 
+.showbar {
+    background-color: var(--task-color);
+    height: 25px;
+    width: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-top: 3px;
+}
+
+.showbar #show {
+    color: var(--mov_color);
+    margin-bottom: auto;
+}
+
 /* task aside styles */
 .task_aside {
     margin-left: 10px;
