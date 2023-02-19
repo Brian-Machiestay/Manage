@@ -24,8 +24,14 @@ function changeTheme(event) {
     }
 }
 
-
+// hide and show sidebar
+function hideShowSidebar() {
+    $('.side_bar').css('display', 'none');
+}
 
 
 // toggles the theme between dark and light mode
 $('.fa-toggle-on, .fa-toggle-off').click(changeTheme);
+
+// attach an event listender to the hide sidebar icon
+$('.side').click(hideShowSidebar);
