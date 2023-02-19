@@ -25,10 +25,11 @@ function changeTheme(event) {
 }
 
 // hide and show sidebar
-function hideShowSidebar() {
+function hideSidebar() {
     const hide = $('#hide');
     $('.side_bar').css('display', 'none');
-    hide.addClass('')
+    hide.addClass('');
+    $('.showbar').css('display', 'block');
 }
 
 
@@ -36,4 +37,4 @@ function hideShowSidebar() {
 $('.fa-toggle-on, .fa-toggle-off').click(changeTheme);
 
 // attach an event listender to the hide sidebar icon
-$('#hide').click(hideShowSidebar);
+$('#hide').click(hideSidebar);

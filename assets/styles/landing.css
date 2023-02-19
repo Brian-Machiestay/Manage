@@ -128,6 +128,7 @@ a:hover {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     margin-top: 3px;
+    display: none;
 }
 
 .showbar #show {
@@ -160,6 +161,7 @@ a:hover {
     cursor: pointer;
     box-shadow: var(--box-shadow);
 }
+
 .task_aside1 .fa-circle {
     color:rgb(106, 185, 246);
 }
