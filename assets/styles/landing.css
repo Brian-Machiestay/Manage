@@ -48,6 +48,9 @@ header h1 {
     font-weight: bold;
     margin: auto 2px;
 }
+p {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
 
 header p.newTask {
     margin: auto 8px;
