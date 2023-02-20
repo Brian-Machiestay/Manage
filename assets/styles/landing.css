@@ -77,7 +77,7 @@ header p.newTask {
     margin-top: -50px;
     opacity: 1;
     height: 100vh;
-    border-right: var(--sidebar-border)
+    border-right: var(--sidebar-border);
 }
 
 .list-group {
@@ -192,9 +192,15 @@ aside p {
 .modal-header, .modal-body, .modal-footer {
     border: none;
 }
-#viewTaskWindow .modal-body textarea, #viewTaskWindow .modal-body textarea:focus {
-    width: 100%;
-    background-color: var(--task-color);
-    color: var(--txt-color);
-    border: none;
+
+#viewTaskWindow .modal-title {
+    color: white;
+}
+.subtaskcontent {
+    display: inline;
+}
+
+
+.done {
+    text-decoration: line-through;
 }
