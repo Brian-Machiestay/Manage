@@ -10,6 +10,7 @@ function changeTheme(event) {
          root.css('--sub-task-color', 'rgba(255, 255, 255, 0.41)');
          root.css('--box-shadow', '2px 2px 2px rgba(0, 0, 0, 0.387)');
          root.css('--sidebar-border', '1px solid rgba(242, 237, 237, 0.12)');
+         root.css('--column-color', 'rgb(69, 69, 106)')
          toggle.addClass('fa-toggle-on').removeClass('fa-toggle-off');
     }
     else {
@@ -20,6 +21,7 @@ function changeTheme(event) {
         root.css('--sub-task-color', 'rgba(0, 0, 0, 0.387)');
         root.css('--box-shadow', '3px 3px 2px #aaaaaaa0');
         root.css('--sidebar-border', '1px solid rgba(242, 237, 237, 0.571)');
+        root.css('--column-color', 'rgb(216, 237, 236)');
         toggle.addClass('fa-toggle-off').removeClass('fa-toggle-on');
     }
 }

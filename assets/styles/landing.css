@@ -4,6 +4,7 @@
     --bg-color: rgb(227, 247, 246);
     --txt-color: black;
     --task-color: white;
+    --column-color: rgb(216, 237, 236);
     --sub-task-color:  rgba(0, 0, 0, 0.387);
     --box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.387);
     --bg-color-light: rgb(227, 247, 246);
@@ -12,6 +13,7 @@
     --sub-task-color-light:  rgba(0, 0, 0, 0.387);
     --mov_color-light: rgb(99, 99, 236);
     --box-shadow-light: 3px 3px 2px #aaaaaaa0;
+    --column-color-light: rgb(69, 69, 106);
     --bg-: rgb(40, 40, 74);
     --txt: rgb(255, 255, 255);
     --tax: rgb(51, 51, 92);
@@ -222,8 +224,20 @@ aside p {
 /* style the create column div */
 #create_column {
     min-height: 90%;
-    background-color: var(--task-color);
+    background-color: var(--column-color);
     margin-right: 20px;
     margin-top: 35px;
     padding: auto;
+    min-width: 270px;
+    max-width: 230px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
 }
+#create_column p {
+    margin: auto;
+}
+
