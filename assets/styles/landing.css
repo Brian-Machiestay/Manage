@@ -221,7 +221,7 @@ aside p {
     width: 95%;
 }
 #createTaskWindow .modal-content {
-    background-color: var(--task-color);
+    background-color: var(--bg-color);
 }
 #createTaskWindow .add_sub_task, #createTaskWindow .create_task {
     margin-top: 10px;
@@ -232,6 +232,25 @@ aside p {
     color: black;
     box-shadow: none;
     border-radius: 20px;
+}
+#createTaskWindow .add_sub_task {
+    background-color: var(--mov_color);
+    border: none;
+}
+#createTaskWindow .add_sub_task p {
+    color: white;
+}
+
+#createTaskWindow .create_task {
+    border: none;
+    background-color: var(--mov_color);
+}
+#createTaskWindow p, h5, label {
+    color: var(--txt-color);
+}
+#createTaskWindow input, textarea {
+    background-color: var(--sub-task-color);
+    color: var(--txt-color);
 }
 #createTaskWindow .create_task p, #createTaskWindow .add_sub_task p {
     font-size: 12pt;
