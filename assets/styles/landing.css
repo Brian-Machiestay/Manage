@@ -327,3 +327,6 @@ aside p {
     display: flex;
     display: none;
 }
+.fa-plus-square-o {
+    color: var(--mov_color);
+}
