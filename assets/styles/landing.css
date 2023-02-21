@@ -221,6 +221,9 @@ aside p {
 
 /* style the create column div */
 #create_column {
-    min-height: 50%;
+    min-height: 90%;
     background-color: var(--task-color);
+    margin-right: 20px;
+    margin-top: 35px;
+    padding: auto;
 }
