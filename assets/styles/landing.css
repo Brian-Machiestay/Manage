@@ -17,7 +17,7 @@
     --tax: rgb(51, 51, 92);
     --sub: rgba(255, 255, 255, 0.41);
     --mov: rgb(123, 123, 223);
-    --sidebar-border: 1px solid rgba(242, 237, 237, 0.571);
+    --sidebar-border: 1px solid rgba(205, 203, 203, 0.571);
 }
   
 /* body styles */
@@ -67,13 +67,15 @@ header p.newTask {
 }
 
 .task_aside {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x:initial;
+    overflow-y: auto;
+    height: 92vh;
 }
 
 /* side bar styles */
 .sidebar_section {
     display: flex;
+    overflow-x: hidden;
 }
 .side_bar {
     min-width: 250px;
@@ -215,4 +217,10 @@ aside p {
 
 .create_sub_tasksop {
     width: 95%;
+}
+
+/* style the create column div */
+#create_column {
+    min-height: 50%;
+    background-color: var(--task-color);
 }
