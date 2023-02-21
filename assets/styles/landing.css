@@ -207,3 +207,12 @@ aside p {
 .done {
     text-decoration: line-through;
 }
+
+/* styles for create task modal and overrides */
+.description, .title {
+    width: 100%;
+}
+
+.create_sub_tasksop {
+    width: 95%;
+}
