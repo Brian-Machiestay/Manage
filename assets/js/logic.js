@@ -26,6 +26,21 @@ function changeTheme(event) {
     }
 }
 
+// create a board
+function createName () {
+    $('.board_name').css('display', 'flex');
+}
+
+function createBoard () {
+    $('.board_name').css('display', 'none');
+    const name = $('.board_name_input').val();
+    if (name !== 'Enter board name')
+        $('.logo_item2').text(name);
+        
+
+}
+
+
 // hide show sidebar
 function hideSidebar() {
     $('.side_bar').css('display', 'none');
@@ -47,4 +62,8 @@ $('#hide').click(hideSidebar);
 // attach an event listener to show the sidebar
 $('#show').click(showSidebar);
 
-$('.newTask')
+// listen for board name entry
+$('.create_board').click(createName);
+
+// create the board
+$('.fa-plus-square-o').click(createBoard);

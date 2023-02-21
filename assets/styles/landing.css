@@ -65,16 +65,14 @@ header p.newTask {
 
 .logo {
     display: flex;
-    width: 500px;
+    width: 800px;
     justify-content: space-between;
 }
-.logo .logo_item1 {
-    margin-right: 4px;
+header .logo .logo_item1 {
+    margin-right: 20px;
 }
 
 .task_aside {
-    overflow-x:initial;
-    overflow-y: auto;
     height: 92vh;
 }
 
@@ -324,7 +322,6 @@ aside p {
 }
 
 .board_name {
-    display: flex;
     display: none;
 }
 .fa-plus-square-o {
