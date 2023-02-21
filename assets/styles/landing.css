@@ -235,6 +235,11 @@ aside p {
 }
 #createTaskWindow .create_task p, #createTaskWindow .add_sub_task p {
     font-size: 12pt;
+    font-weight: bold;
+}
+
+.create_sub_tasksop {
+    margin-top: 3px;
 }
 
 
