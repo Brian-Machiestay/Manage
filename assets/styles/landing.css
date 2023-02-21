@@ -220,6 +220,25 @@ aside p {
 .create_sub_tasksop {
     width: 95%;
 }
+#createTaskWindow .modal-content {
+    background-color: var(--task-color);
+}
+#createTaskWindow .add_sub_task, #createTaskWindow .create_task {
+    margin-top: 10px;
+    height: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0;
+    background-color: white;
+    color: black;
+    box-shadow: none;
+    border-radius: 20px;
+}
+#createTaskWindow .create_task p, #createTaskWindow .add_sub_task p {
+    font-size: 12pt;
+}
+
+
+
 
 /* style the create column div */
 #create_column {
