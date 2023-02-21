@@ -78,6 +78,7 @@ header p.newTask {
     height: 92vh;
 }
 
+
 /* side bar styles */
 .sidebar_section {
     display: flex;
@@ -315,3 +316,14 @@ aside p {
     margin: auto;
 }
 
+/* styles to control board creation */
+.board_name_input {
+    width: 150px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.board_name {
+    display: flex;
+    display: none;
+}
