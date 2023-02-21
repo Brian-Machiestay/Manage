@@ -151,6 +151,7 @@ a:hover {
 .task_aside {
     margin-left: 10px;
     display: flex;
+    overflow-x: auto;
 }
 
 .task_aside-item {

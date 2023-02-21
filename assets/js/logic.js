@@ -30,12 +30,19 @@ function changeTheme(event) {
 function createName () {
     $('.board_name').css('display', 'flex');
 }
-
+function createColumn () {
+    const column = $('<aside class="task_aside1 task_aside-item"></aside>').append('<p><i class="fa fa-circle" aria-hidden="true"></i> Todo (4)</p>');
+    $('.task_aside').after(column);
+}
 function createBoard () {
     $('.board_name').css('display', 'none');
     const name = $('.board_name_input').val();
-    if (name !== 'Enter board name')
+    if (name !== 'Enter board name') {
         $('.logo_item2').text(name);
+        $('.task_aside-item').remove();
+        $('.create_board').before(`<li href="#" class="list-group-item boardlinks">${name}</li>`);
+    }
+
         
 
 }
@@ -67,3 +74,6 @@ $('.create_board').click(createName);
 
 // create the board
 $('.fa-plus-square-o').click(createBoard);
+
+// create a column
+$('#create_column').click(createColumn);
