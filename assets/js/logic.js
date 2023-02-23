@@ -26,13 +26,78 @@ function changeTheme(event) {
     }
 }
 
+class Board {
+    constructor(obj = null, name = null) {
+        if (obj !== null) {
+            for (item of obj.keys()) {
+                this[item] = obj[item];
+            }
+        }
+        this['name'] = name;
+    }
+
+    getColumns() {
+        // return all columns of this board
+
+    }
+
+    setColumns() {
+        // create a column for this board
+    }
+
+    createTask(columnname) {
+        // create a task for a particular column
+    }
+
+    getTasks(column) {
+        // get all tasks in particular column
+    }
+
+    createSubTasks(task) {
+        // create sub tasks for a particular task
+    }
+
+    getSubTasks(task) {
+        // return subtasks for a particular task
+    }
+
+    toString() {
+
+    }
+}
+
+
+class Storage {
+    allObjs = [];
+
+    constructor () {
+
+    }
+
+    getBoards() {
+        // return all Board instances from storage
+    }
+
+    new() {
+        // add a new item to storage
+    }
+
+    save() {
+        // save all board instances to storage
+    }
+
+    reload () {
+        // get board from storage and return instances
+    }
+}
+
 // create a board
 function createName () {
     $('.board_name').css('display', 'flex');
 }
 function createColumn () {
     const column = $('<aside class="task_aside1 task_aside-item"></aside>').append('<p><i class="fa fa-circle" aria-hidden="true"></i> Todo (4)</p>');
-    $('.task_aside').after(column);
+    $('.task_aside').prepend(column);
 }
 function createBoard () {
     $('.board_name').css('display', 'none');
@@ -42,9 +107,6 @@ function createBoard () {
         $('.task_aside-item').remove();
         $('.create_board').before(`<li href="#" class="list-group-item boardlinks">${name}</li>`);
     }
-
-        
-
 }
 
 
