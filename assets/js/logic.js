@@ -41,12 +41,17 @@ class Board {
         // create a column for this board
         column_obj = {};
         column_obj['colName'] = columnname;
+        column_obj['tasks'] = [];
         this.Allcolumns.push(column_obj);
     }
 
-    createTask(columnname) {
+    createTask(columnname, taskName) {
         // create a task for a particular column
-        for (let obj)
+        for (let obj of this.Allcolumns) {
+            if (columnname == obj['colName']) {
+                obj['tasks'].push(taskName);
+            }
+        }
     }
 
     getTasks(column) {
