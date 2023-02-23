@@ -39,7 +39,7 @@ class Board {
 
     createColumn(columnname) {
         // create a column for this board
-        column_obj = {};
+        const column_obj = {};
         column_obj['colName'] = columnname;
         column_obj['tasks'] = [];
         this.Allcolumns.push(column_obj);
@@ -47,7 +47,7 @@ class Board {
 
     createTask(columnname, taskName, descrip) {
         // create a task for a particular column
-        ob = {taskName, des: descrip};
+        const ob = {taskName, des: descrip};
         for (let obj of this.Allcolumns) {
             if (columnname == obj['colName']) {
                 obj['tasks'].push(ob);
@@ -59,9 +59,9 @@ class Board {
         // get all tasks in particular column
     }
 
-    createSubTasks(taskName, ColumnName, subtask = {subName: '', stat: ''}) {
+    createSubTask(taskName, ColumnName, subtask = {subName: '', stat: ''}) {
         // create sub tasks for a particular task
-        sub = {subName, stat};
+        const sub = subtask;
         for (const obj of this.Allcolumns) {
             if (obj['colName'] === ColumnName) {
                 for (const task of obj['tasks']) {
@@ -156,3 +156,10 @@ $('.fa-plus-square-o').click(createBoard);
 
 // create a column
 $('#create_column').click(createColumn);
+
+// test cases
+board = new Board('Manage app');
+board.createColumn('In progress');
+board.createTask('In progress', 'Doing the right things at the right time', 'we have been doing this all along');
+board.createSubTask('Doing the right things at the right time', 'In progress', {subName: 'doing it right', stat: 'done',})
+console.log(board);
