@@ -50,6 +50,7 @@ class Board {
         for (let obj of this.Allcolumns) {
             if (columnname == obj['colName']) {
                 obj['tasks'].push(taskName);
+                if (!obj.tasks.hasOwnProperty('subtasks')) obj.tasks['subtasks'] = [];
             }
         }
     }
