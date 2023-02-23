@@ -26,10 +26,17 @@ function changeTheme(event) {
     }
 }
 
+storage = Storage();
+
 class Board {
-    constructor(name = null) {
-        this.boadName = name;
+    constructor(name = null, ob = null) {
+        this.boardName = name;
         this.Allcolumns = [];
+        if (ob !== null) {
+            this.boardName = ob.boardName;
+            this.Allcolumns = ob.Allcolumns;
+        }
+        
     }
 
     getColumns() {
@@ -77,10 +84,6 @@ class Board {
     getSubTasks(task) {
         // return subtasks for a particular task
     }
-
-    toString() {
-        // convert this board to a string
-    }
 }
 
 
@@ -95,12 +98,14 @@ class Storage {
         // return all Board instances from storage
     }
 
-    new() {
+    new(ob) {
         // add a new item to storage
+        this.allObjs.push(ob)
     }
 
     save() {
         // save all board instances to storage
+        const localstore 
     }
 
     reload () {
@@ -163,3 +168,7 @@ board.createColumn('In progress');
 board.createTask('In progress', 'Doing the right things at the right time', 'we have been doing this all along');
 board.createSubTask('Doing the right things at the right time', 'In progress', {subName: 'doing it right', stat: 'done',})
 console.log(board);
+console.log('----------the actual board above---------------');
+js = JSON.stringify(board);
+console.log(JSON.parse(js));
+console.log(new Board(null, JSON.parse(js)));
