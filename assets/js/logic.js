@@ -45,12 +45,12 @@ class Board {
         this.Allcolumns.push(column_obj);
     }
 
-    createTask(columnname, taskName) {
+    createTask(columnname, taskName, descrip) {
         // create a task for a particular column
+        ob = {taskName, des: descrip};
         for (let obj of this.Allcolumns) {
             if (columnname == obj['colName']) {
-                obj['tasks'].push(taskName);
-                if (!obj.tasks.hasOwnProperty('subtasks')) obj.tasks['subtasks'] = [];
+                obj['tasks'].push(ob);
             }
         }
     }
@@ -59,8 +59,19 @@ class Board {
         // get all tasks in particular column
     }
 
-    createSubTasks(task) {
+    createSubTasks(taskName, ColumnName, subtask = {subName: '', stat: ''}) {
         // create sub tasks for a particular task
+        sub = {subName, stat};
+        for (const obj of this.Allcolumns) {
+            if (obj['colName'] === ColumnName) {
+                for (const task of obj['tasks']) {
+                    if (task['taskName'] === taskName) {
+                        if (!task.hasOwnProperty('subtasks')) task['subtasks'] = [];
+                        task['subtasks'].push(sub);
+                    }
+                }
+            }
+        } 
     }
 
     getSubTasks(task) {
@@ -68,7 +79,7 @@ class Board {
     }
 
     toString() {
-
+        // convert this board to a string
     }
 }
 
