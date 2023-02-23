@@ -27,13 +27,9 @@ function changeTheme(event) {
 }
 
 class Board {
-    constructor(obj = null, name = null) {
-        if (obj !== null) {
-            for (item of obj.keys()) {
-                this[item] = obj[item];
-            }
-        }
-        this['name'] = name;
+    constructor(name = null) {
+        this.boadName = name;
+        this.Allcolumns = [];
     }
 
     getColumns() {
@@ -41,12 +37,16 @@ class Board {
 
     }
 
-    setColumns() {
+    createColumn(columnname) {
         // create a column for this board
+        column_obj = {};
+        column_obj['colName'] = columnname;
+        this.Allcolumns.push(column_obj);
     }
 
     createTask(columnname) {
         // create a task for a particular column
+        for (let obj)
     }
 
     getTasks(column) {
