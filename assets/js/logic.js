@@ -88,12 +88,14 @@ class Board {
 
 
 class Storage {
-    static allObjs = [];
+    constructor () {
+        this.allObjs = [];
+    }
 
-    getBoards() {
+    get boards() {
         // return all Board instances from storage
         const boards = [];
-        Storage.allObjs.forEach( (ob) => {
+        this.allObjs.forEach( (ob) => {
             boards.push(new Board(null, ob));
         })
         return boards;
@@ -101,24 +103,29 @@ class Storage {
 
     new(ob) {
         // add a new item to storage
-        console.log(Storage.allObjs)
-        if (Storage.allObjs.length === 0) {
-            Storage.allObjs.push(ob);
+        let allob = [...this.allObjs];
+        let lenOfAllobj = this.allObjs.length;
+        if (this.allObjs.length === 0) {
+            this.allObjs.push(ob);
         }
         else {
-            for (let i = 0; i < this.allObjs.length; i++) {
-                if (Storage.allObjs[i]['boardName'] === ob.boardName) delete Storage.allObjs[i];
+            for (let i = 0; i < lenOfAllobj; i++) {
+                if (allob[i]['boardName'] === ob['boardName']) {
+                    allob.splice(i, 1);
+                    lenOfAllobj = lenOfAllobj - 1;
+                    i = i - 1;
+                }
             }
-            Storage.allObjs.push(ob);
+            allob.push(ob);
+            this.allObjs = [...allob];
         }
         
     }
 
     save() {
         // save all board instances to storage
-        console.log(Storage.allObjs);
         const localstore = localStorage.getItem('boards');
-        if (localstore === undefined) {
+        if (localstore === null) {
             localStorage.setItem('boards', JSON.stringify(this.allObjs))
         }
         else {
@@ -130,8 +137,7 @@ class Storage {
     reload () {
         // get board from storage and return instances
         const localstore = localStorage.getItem('boards');
-        if (localstore === undefined) return;
-        this.allObjs = [];
+        if (localstore === null) return;
         this.allObjs = JSON.parse(localstore);
     }
 }
@@ -185,12 +191,17 @@ $('.fa-plus-square-o').click(createBoard);
 // create a column
 $('#create_column').click(createColumn);
 
+
 // test cases
 storage = new Storage();
 storage.reload();
-board = new Board('Mood Board');
+board = new Board('Super Board');
+board2 = new Board('Motherboard Board');
 board.createColumn('In progress');
 board.createTask('In progress', 'Doing the right things at the right time', 'we have been doing this all along');
 board.createSubTask('Doing the right things at the right time', 'In progress', {subName: 'doing it right', stat: 'done',})
 storage.new(board);
+storage.new(board2);
 storage.save();
+
+
