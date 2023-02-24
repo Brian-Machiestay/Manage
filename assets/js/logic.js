@@ -26,7 +26,7 @@ function changeTheme(event) {
     }
 }
 
-storage = Storage();
+
 
 class Board {
     constructor(name = null, ob = null) {
@@ -88,28 +88,51 @@ class Board {
 
 
 class Storage {
-    allObjs = [];
-
-    constructor () {
-
-    }
+    static allObjs = [];
 
     getBoards() {
         // return all Board instances from storage
+        const boards = [];
+        Storage.allObjs.forEach( (ob) => {
+            boards.push(new Board(null, ob));
+        })
+        return boards;
     }
 
     new(ob) {
         // add a new item to storage
-        this.allObjs.push(ob)
+        console.log(Storage.allObjs)
+        if (Storage.allObjs.length === 0) {
+            Storage.allObjs.push(ob);
+        }
+        else {
+            for (let i = 0; i < this.allObjs.length; i++) {
+                if (Storage.allObjs[i]['boardName'] === ob.boardName) delete Storage.allObjs[i];
+            }
+            Storage.allObjs.push(ob);
+        }
+        
     }
 
     save() {
         // save all board instances to storage
-        const localstore 
+        console.log(Storage.allObjs);
+        const localstore = localStorage.getItem('boards');
+        if (localstore === undefined) {
+            localStorage.setItem('boards', JSON.stringify(this.allObjs))
+        }
+        else {
+            localStorage.removeItem('boards');
+            localStorage.setItem('boards', JSON.stringify(this.allObjs));
+        }
     }
 
     reload () {
         // get board from storage and return instances
+        const localstore = localStorage.getItem('boards');
+        if (localstore === undefined) return;
+        this.allObjs = [];
+        this.allObjs = JSON.parse(localstore);
     }
 }
 
@@ -163,12 +186,11 @@ $('.fa-plus-square-o').click(createBoard);
 $('#create_column').click(createColumn);
 
 // test cases
-board = new Board('Manage app');
+storage = new Storage();
+storage.reload();
+board = new Board('Mood Board');
 board.createColumn('In progress');
 board.createTask('In progress', 'Doing the right things at the right time', 'we have been doing this all along');
 board.createSubTask('Doing the right things at the right time', 'In progress', {subName: 'doing it right', stat: 'done',})
-console.log(board);
-console.log('----------the actual board above---------------');
-js = JSON.stringify(board);
-console.log(JSON.parse(js));
-console.log(new Board(null, JSON.parse(js)));
+storage.new(board);
+storage.save();
