@@ -7,10 +7,11 @@ from models.base import Base
 from models.board import Board
 from models.items import Item
 from models.task import Task
+form models.subtask import Subtask
 import sqlalchemy
 
 
-classes = {'Board': Board, 'Item': Item, 'Task': Task}
+classes = {'Board': Board, 'Item': Item, 'Task': Task, 'Subtask': Subtask}
 
 class DBStorage:
     """interaacts with the MySQL database"""
