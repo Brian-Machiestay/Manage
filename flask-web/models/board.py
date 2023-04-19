@@ -3,6 +3,7 @@
 
 from .base import Base, baseMod
 from sqlalchemy import String, Numeric, Column
+from sqlalchemy.orm import relationship
 
 
 class Board(baseMod, Base):

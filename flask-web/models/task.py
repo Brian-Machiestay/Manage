@@ -10,7 +10,7 @@ class Task(baseMod, Base):
     __tablename__ = 'tasks'
     id = Column(String(132), primary_key=True, nullable=False, unique=True)
     item_id = Column(String(132), ForeignKey('items.id'), nullable=False)
-    subtasks = relationship('Subtask')
+    subtasks = relationship('Subtask', backref='task')
     
 
     def __init__(self, name, item_id, *args, **kwargs):

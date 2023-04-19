@@ -2,6 +2,7 @@
 """define all routes for this project"""
 from flask import Flask, abort
 from flask import render_template
+from uuid import uuid4
 import models
 
 app = Flask(__name__)
@@ -10,7 +11,8 @@ app = Flask(__name__)
 @app.route('/', strict_slashes=False)
 def root():
     """queries the root of this project"""
-    return(render_template('index.html'))
+    uid = uuid4()
+    return(render_template('index.html', uid=uid))
 
 
 @app.route('/boards', strict_slashes=False)

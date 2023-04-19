@@ -3,6 +3,8 @@
 
 from .base import Base, baseMod
 from sqlalchemy import String, Numeric, Column, ForeignKey
+from sqlalchemy.orm import relationship
+
 
 class Item(baseMod, Base):
     """create an instance of the item class"""

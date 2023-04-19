@@ -11,7 +11,7 @@ class Subtask(baseMod, Base):
     id = Column(String(132), primary_key=True, nullable=False, unique=True)
     title = Column(String(64), nullable=False)
     task_id = Column(String(64), ForeignKey('tasks.id'), nullable=False)
-    task = relationship('Task', back_ref='subtasks')
+    task = relationship('Task', backref='subtasks')
 
     def __init__(self, title, task_id, *args, **kwargs):
         """initializes a subtask instance"""
