@@ -10,6 +10,7 @@ class Item(baseMod, Base):
     id = Column(String(132), primary_key=True, nullable=False, unique=True)
     name = Column(String(64), nullable=False, unique=True)
     board_id = Column(String(64), ForeignKey('board.id'), nullable=False)
+    board = relationship('Board', backref='items')
 
     def __init__(self, name, board_id, *args, **kwargs):
         """initialize an instance of this class"""
