@@ -1,7 +1,7 @@
 #!/bin/env python3
 """model to create a board object"""
 
-from base import Base, baseMod
+from .base import Base, baseMod
 from sqlalchemy import String, Numeric, Column
 
 
