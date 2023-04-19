@@ -7,13 +7,13 @@ import models
 app = Flask(__name__)
 
 
-app.route('/', strict_slashes=False)
+@app.route('/', strict_slashes=False)
 def root():
     """queries the root of this project"""
     return(render_template('index.html'))
 
 
-app.route('/boards', strict_slashes=False)
+@app.route('/boards', strict_slashes=False)
 def boards():
     """render the all boards page"""
     return(render_template('index.html'))

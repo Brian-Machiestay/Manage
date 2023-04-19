@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="../static/styles/reset.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../static/styles/landing.css" />
+  <title>Manage</title>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1 class="logo_item1">Manage</h1>
+      <h1 class="logo_item2">Platform Launch</h1>
+    </div>
+      <p class="newTask" data-toggle="modal" data-target="#createTaskWindow">+Add New Task</p>
+  </header>
+
+  <!-- the side bar-->
+  <section class="sidebar_section">
+    <aside class="side_bar">
+      <ul class="list-group">
+        <a href="#" class="list-group-item"><h1 class="logo_item1">Manage</h1></a>
+        <li href="#" class="list-group-item">ALL Boards(1)</li>
+        <li href="#" id ="dark-theme-active" class=" dark-theme list-group-item boardlinks active">Platform Launch</li>
+        <li href="#" class="list-group-item boardlinks">Marketing Plan</li>
+        <li href="#" class="list-group-item boardlinks">Roadmap</li>
+        <li href="#" class="list-group-item boardlinks create_board">+Create New Board</li>
+        <li href="#" class="list-group-item board_name"><input type="text" value="Enter board name" class="board_name_input"> <i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i></li>
+        <li href="#" class="list-group-item last"><i id = "toggle" class="fa fa-toggle-off fa-2x" aria-hidden="true"></i></li>
+        <li href="#" class="list-group-item side"><i id = "hide" class="fa fa-eye-slash" aria-hidden="true"></i> Hide sidebar</li>
+      </ul>
+    </aside>
+    <div class="showbar"><i id = "show" class="fa fa-eye" aria-hidden="true"></i></div>
+    <aside class="task_aside">
+      <aside class="task_aside1 task_aside-item">
+        <p><i class="fa fa-circle" aria-hidden="true"></i> Todo (4)</p>
+        <div class="task" data-toggle="modal" data-target="#viewTaskWindow">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+        <div class="task">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+        <div class="task">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+        <div class="task">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+      </aside>
+      <aside class="task_aside2 task_aside-item">
+        <p><i class="fa fa-circle" aria-hidden="true"></i> Doing (4)</p>
+        <div class="task">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+        <div class="task">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+        <div class="task">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+        <div class="task">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+        <div class="task">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+      </aside>
+      <aside class="task_aside3 task_aside-item">
+        <p><i class="fa fa-circle" aria-hidden="true"></i> Done (4)</p>
+        <div class="task">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+        <div class="task">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+        <div class="task">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+      </aside>
+      <aside class="task_aside3 task_aside-item">
+        <p><i class="fa fa-circle" aria-hidden="true"></i> Done (4)</p>
+        <div class="task">
+          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>
+      </aside>
+      <aside id="create_column">
+        <p class="new_column">+New Column</p>
+      </aside>
+    </aside>
+    <!-- Modal for view task-->
+    <div class="modal fade" id="viewTaskWindow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Build UI for onboarding workflow</h5>
+            <button type="button" class="close">
+              <span aria-hidden="true"><i class="fa fa-pencil-square-o edit" aria-hidden="true"></i></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p contenteditable="true">we know what we are building for version two and now we have to plan a new pricing model</p>
+            
+            <div id="modal_sub_tasks">
+              <p>subtasks (2 of 3)</p>
+              <input type="checkbox" id="sub1" checked disabled="disabled">
+              <p class="subtaskcontent done">Research competitor pricing and business models</p><br>
+              <input type="checkbox" id="sub2" checked disabled="disabled">
+              <p class="subtaskcontent done">Outline a business model that works for our solution</p><br>
+              <input type="checkbox" id="sub3">
+              <p class="subtaskcontent">Talk to potential customers about our proposed solution</p><br>
+            </div><br>
+            <div class="form-group">
+              <label for="view_task_status">Status</label>
+              <select class="form-control" id="view_task_status" disabled>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary save">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal for create task -->
+    <div class="modal fade" id="createTaskWindow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add new task</h5>
+          </div>
+          <div class="modal-body">
+            <label for="title">Title</label><br>
+            <input type="text" class="title"><br>
+            <label for="title">Description</label><br>
+            <textarea class="description"></textarea>
+            <div id="create_sub_tasks">
+              <p>Subtasks</p>
+              <input type="text" class="create_sub_tasksop" value="eg. finish styling pages"> <i class="fa fa-times" aria-hidden="true"></i><br>
+              <input type="text" class="create_sub_tasksop" value=""> <i class="fa fa-times" aria-hidden="true"></i><br>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block add_sub_task"><p>+Add new subtask</p></button>
+            <div class="form-group">
+              <label for="create_task_status">Status</label>
+              <select class="form-control" id="create_task_status">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-lg btn-block create_task"><p>Create Task</p></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="../static/js/logic.js"></script>
+</body>
+</html>

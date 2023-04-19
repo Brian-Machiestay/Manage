@@ -1,9 +1,9 @@
 #!/bin/env python3
 """create subtasks class"""
 from .base import Base, baseMod
-from sqlalchemy import String, Numeric, Column
+from sqlalchemy import String, Numeric, Column, ForeignKey
 
-Class Subtask(baseMod, Base):
+class Subtask(baseMod, Base):
     """defineds a subtask table"""
     __tablename__ = 'subtasks'
     id = Column(String(132), primary_key=True, nullable=False, unique=True)

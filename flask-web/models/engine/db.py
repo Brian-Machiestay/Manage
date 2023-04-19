@@ -7,7 +7,7 @@ from models.base import Base
 from models.board import Board
 from models.items import Item
 from models.task import Task
-form models.subtask import Subtask
+from models.subtasks import Subtask
 import sqlalchemy
 
 

@@ -1,0 +1,330 @@
+/* General styles */
+:root {
+    --mov_color: rgb(99, 99, 236);
+    --bg-color: rgb(227, 247, 246);
+    --txt-color: black;
+    --task-color: white;
+    --subtask_txt: black;
+    --add_sub_task_col: white;
+    --column-color: rgb(216, 237, 236);
+    --sub-task-color:  rgba(0, 0, 0, 0.387);
+    --box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.387);
+    --bg-color-light: rgb(227, 247, 246);
+    --txt-color-light: black;
+    --task-color-light: white;
+    --sub-task-color-light:  rgba(0, 0, 0, 0.387);
+    --mov_color-light: rgb(99, 99, 236);
+    --box-shadow-light: 3px 3px 2px #aaaaaaa0;
+    --column-color-light: rgb(69, 69, 106);
+    --bg-: rgb(40, 40, 74);
+    --txt: rgb(255, 255, 255);
+    --tax: rgb(51, 51, 92);
+    --sub: rgba(255, 255, 255, 0.41);
+    --mov: rgb(123, 123, 223);
+    --subtask_txt: rgb(40, 40, 74);
+    --sub_task_color: rgb(123, 123, 223);
+    --sidebar-border: 1px solid rgba(205, 203, 203, 0.571);
+}
+  
+/* body styles */
+body {
+    background-color: var(--bg-color);
+}
+/* new task design */
+.newTask {
+    background-color: var(--mov_color);
+    color: white;
+    border-radius: 15px;
+    padding: 3px;
+    box-shadow: var(--box-shadow);
+}
+
+/* header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    background-color: var(--task-color);
+    color: var(--txt-color);
+}
+
+header h1 {
+    font-size: 20pt;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: auto 2px;
+}
+p {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+header p.newTask {
+    margin: auto 8px;
+    cursor: pointer;
+}
+
+.logo {
+    display: flex;
+    width: 800px;
+    justify-content: space-between;
+}
+header .logo .logo_item1 {
+    margin-right: 20px;
+}
+
+.task_aside {
+    height: 92vh;
+}
+
+
+/* side bar styles */
+.sidebar_section {
+    display: flex;
+    overflow-x: hidden;
+}
+.side_bar {
+    min-width: 250px;
+    margin-top: -50px;
+    opacity: 1;
+    height: 100vh;
+    border-right: var(--sidebar-border);
+}
+
+.list-group {
+    height: 100%;
+    background-color: var(--task-color);
+}
+
+.list-group .last {
+    margin-top: auto;
+}
+.list-group-item {
+    border: none;
+    cursor: pointer;
+    background-color: var(--task-color);
+    color: var(--txt-color);
+}
+.boardlinks:hover {
+    width: 90%;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+    background-color: var(--mov_color);
+}
+a:hover {
+    text-decoration: none;
+    color: var(--txt-color);
+}
+.list-group .logo_item1 {
+    font-size: 20pt;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: auto 2px;
+}
+.list-group .list-group-item.active {
+    width: 90%;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+    background-color: var(--mov_color);
+}
+
+.list-group .last .fa-toggle-on, .list-group .last .fa-toggle-off {
+    color: var(--mov_color);
+}
+
+.showbar {
+    background-color: var(--task-color);
+    height: 25px;
+    width: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-top: 3px;
+    display: none;
+}
+
+.showbar #show {
+    color: var(--mov_color);
+    margin-bottom: auto;
+    cursor: pointer;
+}
+
+/* task aside styles */
+.task_aside {
+    margin-left: 10px;
+    display: flex;
+    overflow-x: auto;
+}
+
+.task_aside-item {
+    margin-right: 20px;
+}
+
+/* styles for each task */
+.task {
+    min-width: 270px;
+    max-width: 230px;
+    max-height: 100px;
+    height: 80px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--task-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+}
+
+.task_aside1 .fa-circle {
+    color:rgb(106, 185, 246);
+}
+
+.task_aside2 .fa-circle {
+    color: var(--mov_color);
+}
+.task_aside3 .fa-circle {
+    color: rgb(114, 227, 114);
+}
+
+.task .task_head {
+    color: var(--txt-color);
+    font-weight: bold;
+}
+.task .subtask_status {
+    color: var(--sub-task-color);
+}
+aside p {
+    color: var(--sub-task-color);
+}
+
+/* viewTask modal styles override */
+#viewTaskWindow .modal-dialog .modal-content {
+    background-color: var(--bg-color);
+}
+.modal-header, .modal-body, .modal-footer {
+    border: none;
+}
+
+#viewTaskWindow .modal-title {
+    color: white;
+}
+.subtaskcontent {
+    display: inline;
+}
+#viewTaskWindow p {
+    color: var(--txt-color);
+}
+
+.edit, .edit:focus, .edit:active {
+    color: var(--txt-color);
+    border: none;
+    box-shadow: none;
+}
+
+.save, .save:focus, .save:hover {
+    box-shadow: none;
+    background-color: var(--mov_color);
+    border: none;
+    display: none;
+}
+
+
+.done {
+    text-decoration: line-through;
+}
+
+/* styles for create task modal and overrides */
+.description, .title {
+    width: 100%;
+}
+
+.create_sub_tasksop {
+    width: 95%;
+}
+#createTaskWindow .modal-content {
+    background-color: var(--bg-color);
+}
+
+#createTaskWindow .add_sub_task, #createTaskWindow .create_task {
+    margin-top: 10px;
+    height: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0;
+    background-color: white;
+    color: black;
+    box-shadow: none;
+    border-radius: 20px;
+}
+#createTaskWindow .add_sub_task {
+    background-color: var(--add_sub_task_col);
+    border: none;
+}
+#createTaskWindow .add_sub_task p {
+    color: var(--mov_color);
+}
+/* change color for sub task close button */
+.fa-times {
+    color: rgb(174, 172, 172);
+    cursor: pointer;
+}
+
+#createTaskWindow .create_task {
+    border: none;
+    background-color: var(--mov_color);
+}
+
+#createTaskWindow p, h5, label {
+    color: var(--txt-color);
+}
+
+
+#createTaskWindow input, textarea {
+    background-color: var(--add_sub_task_col);
+    color: var(--subtask_txt);
+    box-shadow: none;
+    border: 1px solid black;
+}
+#createTaskWindow .create_task p, #createTaskWindow .add_sub_task p {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.create_sub_tasksop {
+    margin-top: 3px;
+}
+
+
+
+
+/* style the create column div */
+#create_column {
+    min-height: 90%;
+    background-color: var(--column-color);
+    margin-right: 20px;
+    margin-top: 35px;
+    padding: auto;
+    min-width: 270px;
+    max-width: 230px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+}
+#create_column p {
+    margin: auto;
+}
+
+/* styles to control board creation */
+.board_name_input {
+    width: 150px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.board_name {
+    display: none;
+}
+.fa-plus-square-o {
+    color: var(--mov_color);
+}
