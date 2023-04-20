@@ -18,7 +18,9 @@ app = Flask(__name__)
 def root():
     """queries the root of this project"""
     bd = Board.board('uuiddeessfff')
-    print(bd)
+    print(bd.name)
+    for item in bd.items:
+        print(item.name)
     uid = uuid4()
     return(render_template('index.html', uid=uid))
 
