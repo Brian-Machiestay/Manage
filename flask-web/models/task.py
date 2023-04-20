@@ -10,14 +10,15 @@ class Task(baseMod, Base):
     __tablename__ = 'tasks'
     id = Column(String(132), primary_key=True, nullable=False, unique=True)
     item_id = Column(String(132), ForeignKey('items.id'), nullable=False)
+    title = Column(String(132), nullable=False, unique=True)
+    description = Column(String(1024), nallable=False)
     item = relationship('Item', back_populates='tasks')
     subtasks = relationship('Subtask', back_populates='task')
     
 
-    def __init__(self, name, item_id, *args, **kwargs):
+    def __init__(self, tit, des, item_id, *args, **kwargs):
         """initialize an instance of this class"""
         super().__init__(self, *args, **kwargs)
-        item_id = item_id
-
-    
-        
+        self.title = tit
+        self.description = des
+        self.item_id = item_id

@@ -12,7 +12,7 @@ class Board(baseMod, Base):
     __tablename__ = 'board'
     id = Column(String(132), primary_key=True, nullable=False, unique=True)
     name = Column(String(64), nullable=False, unique=True)
-    items = relationship('Item')
+    items = relationship('Item', back_populates='board')
 
     def __init__(self, name, *args, **kwargs):
         """initialize an instance of this class"""
