@@ -4,10 +4,10 @@ from flask import Flask, abort
 from flask import render_template
 from uuid import uuid4
 import models
-from board import Board
-from items import Item
-from subtasks import Subtask
-from task import Task
+from models.board import Board
+from models.items import Item
+from models.subtasks import Subtask
+from models.task import Task
 
 
 
@@ -17,6 +17,8 @@ app = Flask(__name__)
 @app.route('/', strict_slashes=False)
 def root():
     """queries the root of this project"""
+    bd = Board.board('uuiddeessfff')
+    print(bd)
     uid = uuid4()
     return(render_template('index.html', uid=uid))
 

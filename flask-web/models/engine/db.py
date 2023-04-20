@@ -58,8 +58,13 @@ class DBStorage:
         if cls not in classes.values():
             return None
 
-        all_cls = self._session.query(cls).all()
+        all_cls = self.__session.query(cls).all()
         return all_cls
 
     def one(self, cls, id):
-        """return one object 
+        """return one object of a class"""
+        allobjs = self.all(cls)
+        for obj in allobjs:
+            if obj.id == id:
+                return obj
+        return None
