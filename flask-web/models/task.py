@@ -11,7 +11,7 @@ class Task(baseMod, Base):
     id = Column(String(132), primary_key=True, nullable=False, unique=True)
     item_id = Column(String(132), ForeignKey('items.id'), nullable=False)
     item = relationship('Item', back_populates='tasks')
-    subtasks = relationship('Subtask', backref='task')
+    subtasks = relationship('Subtask', back_populates='task')
     
 
     def __init__(self, name, item_id, *args, **kwargs):
