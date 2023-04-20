@@ -25,7 +25,7 @@ class DBStorage:
                                              'developer',
                                              'localhost',
                                              'manage'))
-   
+
     def new(self, obj):
         """add the object to the current database session"""
         self.__session.add(obj)
@@ -50,17 +50,16 @@ class DBStorage:
         """call remove() method on the private session attribute"""
         self.__session.remove()
 
-    def get(self, cls, id):
+    def all(self, cls):
         """
-        Returns the object based on the class name and its ID, or
+        Returns the object based on the class name and its and ID, or
         None if not found
         """
         if cls not in classes.values():
             return None
 
-        all_cls = models.storage.all(cls)
-        for value in all_cls.values():
-            if (value.id == id):
-                return value
-        return None
+        all_cls = self._session.query(cls).all()
+        return all_cls
 
+    def one(self, cls, id):
+        """return one object 

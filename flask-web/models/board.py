@@ -4,6 +4,7 @@
 from .base import Base, baseMod
 from sqlalchemy import String, Numeric, Column
 from sqlalchemy.orm import relationship
+from models import storage
 
 
 class Board(baseMod, Base):
@@ -17,4 +18,12 @@ class Board(baseMod, Base):
         """initialize an instance of this class"""
         super().__init__(self, *args, **kwargs)
         self.name = name
-        
+
+
+    @classmethod
+    def get_board(self, id):
+        """return a board based on it's id"""
+        this_board = storage.get(Board, id)
+        return this_board
+
+    def 

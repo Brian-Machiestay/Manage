@@ -4,6 +4,12 @@ from flask import Flask, abort
 from flask import render_template
 from uuid import uuid4
 import models
+from board import Board
+from items import Item
+from subtasks import Subtask
+from task import Task
+
+
 
 app = Flask(__name__)
 
