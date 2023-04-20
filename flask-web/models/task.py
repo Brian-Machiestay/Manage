@@ -11,7 +11,7 @@ class Task(baseMod, Base):
     id = Column(String(132), primary_key=True, nullable=False, unique=True)
     item_id = Column(String(132), ForeignKey('items.id'), nullable=False)
     title = Column(String(132), nullable=False, unique=True)
-    description = Column(String(1024), nallable=False)
+    description = Column(String(1024), nullable=False)
     item = relationship('Item', back_populates='tasks')
     subtasks = relationship('Subtask', back_populates='task')
     

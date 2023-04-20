@@ -1,4 +1,5 @@
 -- prepares a MySQL server for the project
+DROP DATABASE IF EXISTS manage;
 CREATE DATABASE IF NOT EXISTS manage;
 CREATE USER IF NOT EXISTS 'brian'@'localhost' IDENTIFIED BY 'developer';
 GRANT ALL PRIVILEGES ON `manage`.* TO 'brian'@'localhost';

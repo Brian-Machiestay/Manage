@@ -203,5 +203,3 @@ board.createSubTask('Doing the right things at the right time', 'In progress', {
 storage.new(board);
 storage.new(board2);
 storage.save();
-
-
