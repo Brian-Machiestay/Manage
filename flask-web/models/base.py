@@ -10,8 +10,8 @@ class baseMod():
     """the base class for all classes"""
     def __init__(self,*args, **kwargs):
         """initializes a basemodel class"""
+        self.id = str(uuid.uuid4())
         if kwargs:
-            self.id = str(uuid.uuid4())
             for key, val in kwargs.items():
                 setattr(self, key, val)
         else:

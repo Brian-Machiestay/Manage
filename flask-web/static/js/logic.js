@@ -27,7 +27,7 @@ function changeTheme(event) {
 }
 
 
-
+/*
 class Board {
     constructor(name = null, ob = null) {
         this.boardName = name;
@@ -85,81 +85,28 @@ class Board {
         // return subtasks for a particular task
     }
 }
+*/
 
-
-class Storage {
-    constructor () {
-        this.allObjs = [];
-    }
-
-    get boards() {
-        // return all Board instances from storage
-        const boards = [];
-        this.allObjs.forEach( (ob) => {
-            boards.push(new Board(null, ob));
-        })
-        return boards;
-    }
-
-    new(ob) {
-        // add a new item to storage
-        let allob = [...this.allObjs];
-        let lenOfAllobj = this.allObjs.length;
-        if (this.allObjs.length === 0) {
-            this.allObjs.push(ob);
-        }
-        else {
-            for (let i = 0; i < lenOfAllobj; i++) {
-                if (allob[i]['boardName'] === ob['boardName']) {
-                    allob.splice(i, 1);
-                    lenOfAllobj = lenOfAllobj - 1;
-                    i = i - 1;
-                }
-            }
-            allob.push(ob);
-            this.allObjs = [...allob];
-        }
-        
-    }
-
-    save() {
-        // save all board instances to storage
-        const localstore = localStorage.getItem('boards');
-        if (localstore === null) {
-            localStorage.setItem('boards', JSON.stringify(this.allObjs))
-        }
-        else {
-            localStorage.removeItem('boards');
-            localStorage.setItem('boards', JSON.stringify(this.allObjs));
-        }
-    }
-
-    reload () {
-        // get board from storage and return instances
-        const localstore = localStorage.getItem('boards');
-        if (localstore === null) return;
-        this.allObjs = JSON.parse(localstore);
-    }
-}
 
 // create a board
-function createName () {
-    $('.board_name').css('display', 'flex');
+async function createBoard () {
+    const boardName = $('#boardName').val();
+    console.log(boardName);
+    try{
+	const res = await $.post('/createBoard', {
+	    name: boardName
+	});
+	console.log(res);
+	window.location.href = '/boards/' + res.name;
+    } catch(e) {
+	console.log(e.responseJSON);
+    }
 }
+
 function createColumn () {
     const column = $('<aside class="task_aside1 task_aside-item"></aside>').append('<p><i class="fa fa-circle" aria-hidden="true"></i> Todo (4)</p>');
     $('.task_aside').prepend(column);
 }
-function createBoard () {
-    $('.board_name').css('display', 'none');
-    const name = $('.board_name_input').val();
-    if (name !== 'Enter board name') {
-        $('.logo_item2').text(name);
-        $('.task_aside-item').remove();
-        $('.create_board').before(`<li href="#" class="list-group-item boardlinks">${name}</li>`);
-    }
-}
-
 
 // hide show sidebar
 function hideSidebar() {
@@ -167,6 +114,7 @@ function hideSidebar() {
     $('.showbar').css('display', 'block');
 }
 
+// show sidebar
 function showSidebar() {
     $('.side_bar').css('display', 'block');
     $('.showbar').css('display', 'none');
@@ -182,24 +130,8 @@ $('#hide').click(hideSidebar);
 // attach an event listener to show the sidebar
 $('#show').click(showSidebar);
 
-// listen for board name entry
-$('.create_board').click(createName);
-
 // create the board
-$('.fa-plus-square-o').click(createBoard);
+$('#createBoard').click(createBoard);
 
 // create a column
 $('#create_column').click(createColumn);
-
-
-// test cases
-storage = new Storage();
-storage.reload();
-board = new Board('Super Board');
-board2 = new Board('Motherboard Board');
-board.createColumn('In progress');
-board.createTask('In progress', 'Doing the right things at the right time', 'we have been doing this all along');
-board.createSubTask('Doing the right things at the right time', 'In progress', {subName: 'doing it right', stat: 'done',})
-storage.new(board);
-storage.new(board2);
-storage.save();
