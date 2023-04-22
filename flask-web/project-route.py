@@ -19,8 +19,6 @@ def root():
     """queries the root of this project"""
     bd = Board.board('uuiddeessfff')
     print(bd.name)
-    for item in bd.items:
-        print(item.name)
     uid = uuid4()
     return(render_template('index.html', uid=uid))
 
@@ -55,8 +53,17 @@ def createBoard():
 
 @app.route('/boards/<name>')
 def getBoard(name):
-    """"render this board"""
-    return (render_template('board.html'))
+    """render this board"""
+    print(name)
+    bd = Board.board_by_name(name.replace('_', ' '))
+    print('this is the board')
+    print(bd)
+    print('done printing')
+    if bd is None:
+        res = make_response(jsonify({"error": "This board already exists"}))
+        return res, 400
+    other_bd = Board.get_other_boards(bd.name)
+    return (render_template('board.html', bd=bd, other_bd=other_bd))
 
 @app.route('/boards')
 def allBoards():

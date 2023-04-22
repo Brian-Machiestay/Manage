@@ -6,7 +6,6 @@ from sqlalchemy import String, Numeric, Column
 from sqlalchemy.orm import relationship
 import models
 
-
 class Board(baseMod, Base):
     """defines a board table"""
     __tablename__ = 'board'
@@ -36,4 +35,10 @@ class Board(baseMod, Base):
     def board_by_name(cls, name):
         """return a board based on its name"""
         bd = models.storage.board_by_name(name)
+        return bd
+
+    @classmethod
+    def get_other_boards(cls, name):
+        """return two boards whose name do not equal name"""
+        bd = models.storage.get_other_boards(name)
         return bd
