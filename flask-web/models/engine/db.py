@@ -63,8 +63,10 @@ class DBStorage:
 
     def one(self, cls, id):
         """return one object of a class"""
-        allobjs = self.all(cls)
-        for obj in allobjs:
-            if obj.id == id:
-                return obj
-        return None
+        allobjs = self.__session.query(cls).filter_by(id=id)
+        return allobjs
+
+    def board_by_name(self, name):
+        """return an object based on it's name"""
+        obj = self.__session.query(Board).filter_by(name=name)
+        return obj

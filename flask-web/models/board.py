@@ -31,3 +31,9 @@ class Board(baseMod, Base):
         """return a single board based on the id"""
         bd = models.storage.one(cls, id)
         return bd
+
+    @classmethod
+    def board_by_name(cls, name):
+        """return a board based on its name"""
+        bd = models.storage.board_by_name(name)
+        return bd
