@@ -46,7 +46,7 @@ def createBoard():
         bd.save()
         print(bd)
         return(jsonify({
-            'name': bd.name
+            'name': bd.name.replace(' ', '_')
         }))
     except(Exception):
         res = make_response(jsonify({"error": "This board already exists"}))
@@ -56,7 +56,13 @@ def createBoard():
 @app.route('/boards/<name>')
 def getBoard(name):
     """"render this board"""
-    return (render_template('index.html'))
+    return (render_template('board.html'))
+
+@app.route('/boards')
+def allBoards():
+    """render all boards"""
+    return (render_template('all_boards.html'))
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port='5000')
