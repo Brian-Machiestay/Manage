@@ -38,70 +38,17 @@
     </aside>
     <div class="showbar"><i id = "show" class="fa fa-eye" aria-hidden="true"></i></div>
     <aside class="task_aside">
-      <aside class="task_aside1 task_aside-item">
-        <p><i class="fa fa-circle" aria-hidden="true"></i> Todo (4)</p>
+      {% for item in bd.items %}
+      <aside class="task_aside{{ loop.index }} task_aside-item">
+        <p><i class="fa fa-circle" aria-hidden="true"></i> {{ item.name }} ({{ item.tasks|length }})</p>
+	{% for task in item.tasks %}
         <div class="task" data-toggle="modal" data-target="#viewTaskWindow">
-          <p class="task_head">Build UI for onboarding flow</p>
+          <p class="task_head">{{ task.title }}</p>
           <p class="subtask_status">0 out of 3 tasks</p>
         </div>
-        <div class="task">
-          <p class="task_head">Build UI for onboarding flow</p>
-          <p class="subtask_status">0 out of 3 tasks</p>
-        </div>
-        <div class="task">
-          <p class="task_head">Build UI for onboarding flow</p>
-          <p class="subtask_status">0 out of 3 tasks</p>
-        </div>
-        <div class="task">
-          <p class="task_head">Build UI for onboarding flow</p>
-          <p class="subtask_status">0 out of 3 tasks</p>
-        </div>
+	{% endfor %}
       </aside>
-      <aside class="task_aside2 task_aside-item">
-        <p><i class="fa fa-circle" aria-hidden="true"></i> Doing (4)</p>
-        <div class="task">
-          <p class="task_head">Build UI for onboarding flow</p>
-          <p class="subtask_status">0 out of 3 tasks</p>
-        </div>
-        <div class="task">
-          <p class="task_head">Build UI for onboarding flow</p>
-          <p class="subtask_status">0 out of 3 tasks</p>
-        </div>
-        <div class="task">
-          <p class="task_head">Build UI for onboarding flow</p>
-          <p class="subtask_status">0 out of 3 tasks</p>
-        </div>
-        <div class="task">
-          <p class="task_head">Build UI for onboarding flow</p>
-          <p class="subtask_status">0 out of 3 tasks</p>
-        </div>
-        <div class="task">
-          <p class="task_head">Build UI for onboarding flow</p>
-          <p class="subtask_status">0 out of 3 tasks</p>
-        </div>
-      </aside>
-      <aside class="task_aside3 task_aside-item">
-        <p><i class="fa fa-circle" aria-hidden="true"></i> Done (4)</p>
-        <div class="task">
-          <p class="task_head">Build UI for onboarding flow</p>
-          <p class="subtask_status">0 out of 3 tasks</p>
-        </div>
-        <div class="task">
-          <p class="task_head">Build UI for onboarding flow</p>
-          <p class="subtask_status">0 out of 3 tasks</p>
-        </div>
-        <div class="task">
-          <p class="task_head">Build UI for onboarding flow</p>
-          <p class="subtask_status">0 out of 3 tasks</p>
-        </div>
-      </aside>
-      <aside class="task_aside3 task_aside-item">
-        <p><i class="fa fa-circle" aria-hidden="true"></i> Done (4)</p>
-        <div class="task">
-          <p class="task_head">Build UI for onboarding flow</p>
-          <p class="subtask_status">0 out of 3 tasks</p>
-        </div>
-      </aside>
+      {% endfor %}
       <aside id="create_column">
         <p class="new_column">+New Column</p>
       </aside>
