@@ -27,65 +27,18 @@ function changeTheme(event) {
 }
 
 
-/*
-class Board {
-    constructor(name = null, ob = null) {
-        this.boardName = name;
-        this.Allcolumns = [];
-        if (ob !== null) {
-            this.boardName = ob.boardName;
-            this.Allcolumns = ob.Allcolumns;
-        }
-        
+// create a new task
+async function createTask() {
+    const title = $('.task_title').val();
+    console.log(title);
+    const des = $('.task_des').val();
+    const status = $('#create_task_status').find(':selected').val();
+    for (let i of $('.create_sub_tasksop')) {
+	console.log($(i).val());
     }
-
-    getColumns() {
-        // return all columns of this board
-
-    }
-
-    createColumn(columnname) {
-        // create a column for this board
-        const column_obj = {};
-        column_obj['colName'] = columnname;
-        column_obj['tasks'] = [];
-        this.Allcolumns.push(column_obj);
-    }
-
-    createTask(columnname, taskName, descrip) {
-        // create a task for a particular column
-        const ob = {taskName, des: descrip};
-        for (let obj of this.Allcolumns) {
-            if (columnname == obj['colName']) {
-                obj['tasks'].push(ob);
-            }
-        }
-    }
-
-    getTasks(column) {
-        // get all tasks in particular column
-    }
-
-    createSubTask(taskName, ColumnName, subtask = {subName: '', stat: ''}) {
-        // create sub tasks for a particular task
-        const sub = subtask;
-        for (const obj of this.Allcolumns) {
-            if (obj['colName'] === ColumnName) {
-                for (const task of obj['tasks']) {
-                    if (task['taskName'] === taskName) {
-                        if (!task.hasOwnProperty('subtasks')) task['subtasks'] = [];
-                        task['subtasks'].push(sub);
-                    }
-                }
-            }
-        } 
-    }
-
-    getSubTasks(task) {
-        // return subtasks for a particular task
-    }
+    console.log(status);
+    console.log(des);
 }
-*/
 
 
 // create a board
@@ -143,6 +96,7 @@ function addSubTask() {
     $('.removeTask').click(removeSubTask);
 }
 
+// remove a subtask
 function removeSubTask(e) {
     $(e.target).prev().remove();
     $(e.target).next().remove();
@@ -184,3 +138,6 @@ $('.add_sub_task').click(addSubTask);
 
 // remove subtask
 $('.removeTask').click(removeSubTask);
+
+// create a task
+$('.create_task').click(createTask);

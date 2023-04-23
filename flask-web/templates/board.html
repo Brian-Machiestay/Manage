@@ -105,12 +105,12 @@
           </div>
           <div class="modal-body">
             <label for="title">Title</label><br>
-            <input type="text" class="title"><br>
+            <input type="text" class="title task_title"><br>
             <label for="title">Description</label><br>
-            <textarea class="description"></textarea>
+            <textarea class="description task_des"></textarea>
             <div id="create_sub_tasks">
               <p>Subtasks</p>
-              <input type="text" class="create_sub_tasksop" value="eg. finish styling pages"> <i class="fa fa-times removeTask" aria-hidden="true"></i><br>
+              <input type="text" class="create_sub_tasksop" value=""> <i class="fa fa-times removeTask" aria-hidden="true"></i><br>
               <input type="text" class="create_sub_tasksop" value=""> <i class="fa fa-times removeTask" aria-hidden="true"></i><br>
             </div>
             <button type="button" class="btn btn-primary btn-lg btn-block add_sub_task"><p>+Add new subtask</p></button>
@@ -127,6 +127,7 @@
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </div>
+	    <p class='createTaskInfo'>This task exists</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary btn-lg btn-block create_task"><p>Create Task</p></button>
