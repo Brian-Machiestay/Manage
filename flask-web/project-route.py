@@ -71,6 +71,38 @@ def allBoards():
     return (render_template('all_boards.html'))
 
 
+# define all api routes
+
+@app.route('/api/createColumn', methods=['POST'], strict_slashes=False)
+def createColumn():
+    """create a new column"""
+    colname = request.form.get('name', None)
+    boardname = request.form.get('board', None)
+    if colname is None:
+        res = make_response(jsonify({"error": "Column name cannot be null"}))
+        return res, 400
+    elif colname.strip() == '':
+        res = make_response(jsonify({"error": "Column name cannot be null"}))
+        return res, 400
+
+    bd = Board.board_by_name(boardname.strip())
+    print('board: {}'.format(bd))
+    col = Item(colname.strip(), bd.id)
+    print('item: {}'.format(col))
+    try:
+        col.save()
+        print(col)
+        return(jsonify({
+            'name': col.name
+        }))
+    except(Exception):
+        res = make_response(jsonify({"error": "This column already exists"}))
+        return res, 400
+
+
+
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port='5000')
 

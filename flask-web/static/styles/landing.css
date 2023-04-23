@@ -328,3 +328,12 @@ aside p {
 .fa-plus-square-o {
     color: var(--mov_color);
 }
+
+/* define styles for success and danger operations */
+.success {
+    color: green;
+}
+
+.danger {
+    color: red;
+}

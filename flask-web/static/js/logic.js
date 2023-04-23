@@ -103,10 +103,38 @@ async function createBoard () {
     }
 }
 
-function createColumn () {
-    const column = $('<aside class="task_aside1 task_aside-item"></aside>').append('<p><i class="fa fa-circle" aria-hidden="true"></i> Todo (4)</p>');
-    $('.task_aside').prepend(column);
+
+// create a new column
+async function createColumn () {
+    const colName = $('#colName').val();
+    const boardname = $('.active').text();
+    console.log(`board name: ${boardname}`);
+    console.log(`column name: ${colName}`);
+    try{
+	const res = await $.post('/api/createColumn', {
+	    board: boardname,
+	    name: colName,
+	});
+	console.log(res);
+	const column = $('<aside class="task_aside1 task_aside-item"></aside>').append(`<p><i class="fa fa-circle" aria-hidden="true"></i> ${colName} (0)</p>`);
+	column.insertBefore('#create_column');
+	$('.createColumnInfo').text('column created successfully');
+	$('.createColumnInfo').addClass('success');
+	$('.createColumnInfo').removeClass('danger');
+	setTimeout(() => {
+	    $('.createColumnInfo').text('');
+	}, 5000);
+    } catch(e) {
+	console.log(e);
+	$('.createColumnInfo').text(e.responseJSON.error);
+	$('.createColumnInfo').addClass('danger');
+	$('.createColumnInfo').removeClass('success');
+	setTimeout(() => {
+	    $('.createColumnInfo').text('');
+	}, 5000);
+    }
 }
+
 
 // hide show sidebar
 function hideSidebar() {
@@ -134,4 +162,4 @@ $('#show').click(showSidebar);
 $('#createBoard').click(createBoard);
 
 // create a column
-$('#create_column').click(createColumn);
+$('#createColumn').click(createColumn);
