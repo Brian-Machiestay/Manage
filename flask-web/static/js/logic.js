@@ -121,6 +121,7 @@ async function createColumn () {
 	$('.createColumnInfo').text('column created successfully');
 	$('.createColumnInfo').addClass('success');
 	$('.createColumnInfo').removeClass('danger');
+	$('#create_task_status').append(`<option>${colName}</option>`)
 	setTimeout(() => {
 	    $('.createColumnInfo').text('');
 	}, 5000);
