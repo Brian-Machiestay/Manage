@@ -29,15 +29,22 @@ function changeTheme(event) {
 
 // create a new task
 async function createTask() {
+    boardName = $('.active').text();
     const title = $('.task_title').val();
     console.log(title);
     const des = $('.task_des').val();
-    const status = $('#create_task_status').find(':selected').val();
-    for (let i of $('.create_sub_tasksop')) {
-	console.log($(i).val());
+    const item = $('#create_task_status').find(':selected').val();
+    taskOb = {
+	boardName: boardName,
+	item: item,
+	task_title: title,
+	des: des,
+	subtasks: [],
     }
-    console.log(status);
-    console.log(des);
+    for (let i of $('.create_sub_tasksop')) {
+	if ($(i).val().strip() !== '') taskOb.subtasks.push($(i).val());
+    }
+    console.log(taskOb);
 }
 
 
