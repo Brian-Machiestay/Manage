@@ -137,6 +137,19 @@ async function createColumn () {
 }
 
 
+// add a subtask
+function addSubTask() {
+    $('#create_sub_tasks').append('<input type="text" class="create_sub_tasksop" value=""> <i class="fa fa-times removeTask" aria-hidden="true"></i><br>');
+    $('.removeTask').click(removeSubTask);
+}
+
+function removeSubTask(e) {
+    $(e.target).prev().remove();
+    $(e.target).next().remove();
+    $(e.target).remove();
+}
+
+
 // hide show sidebar
 function hideSidebar() {
     $('.side_bar').css('display', 'none');
@@ -164,3 +177,10 @@ $('#createBoard').click(createBoard);
 
 // create a column
 $('#createColumn').click(createColumn);
+
+
+// add a subtask
+$('.add_sub_task').click(addSubTask);
+
+// remove subtask
+$('.removeTask').click(removeSubTask);
