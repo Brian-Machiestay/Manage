@@ -1,3 +1,7 @@
+// create global variable to hold board data
+let boardData = null;
+
+
 // function enables theme toggling
 function changeTheme(event) {
     const root = $(':root');
@@ -122,13 +126,20 @@ async function createColumn () {
     }
 }
 
+// get the board data from the backend
 async function get_board_data() {
     const boardname = $('.active').text();
     const res = await $.post('/api/board_data', {
-	    board: boardname,
+	board: boardname,
     });
     console.log(res);
 }
+
+// view a task
+function viewTask() {
+    
+}
+
 
 
 // add a subtask
@@ -157,6 +168,12 @@ function showSidebar() {
     $('.showbar').css('display', 'none');
 }
 
+
+// load the current's board data
+get_board_data().then((res) => {
+    boardData = res;
+});
+console.log(boardData);
 
 // toggles the theme between dark and light mode
 $('.fa-toggle-on, .fa-toggle-off').click(changeTheme);

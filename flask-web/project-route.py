@@ -134,8 +134,27 @@ def createTask():
 @app.route('/api/board_data', methods=['POST'], strict_slashes=False)
 def get_board_data():
     """return all data assiocated with this board"""
-    bdName = request.form.get('boardName', None)
-    bd = Board.board_by_name(bdName);
+    bdName = request.form.get('board', None)
+    print('board name: {}'.format(bdName))
+    bd = Board.board_by_name(bdName)
+    print(bd.items)
+    ob = dict()
+    for it in bd.items:
+        tasks = []
+        for tk in it.tasks:
+            task_dict = dict()
+            task_dict['title'] = tk.title
+            task_dict['des'] = tk.description
+            task_dict['subtasks'] = []
+            for sub in tk.subtasks:
+                sub_dict = dict()
+                sub_dict['title'] = sub.title
+                sub_dict['status'] = sub.status
+                task_dict['subtasks'].append(sub_dict)
+            tasks.append(task_dict)
+        ob[it.name] = tasks
+    print(ob)
+    return(ob)
 
 
 if __name__ == "__main__":
