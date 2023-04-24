@@ -131,5 +131,12 @@ def createTask():
 
 
 
+@app.route('/api/board_data', methods=['POST'], strict_slashes=False)
+def get_board_data():
+    """return all data assiocated with this board"""
+    bdName = request.form.get('boardName', None)
+    bd = Board.board_by_name(bdName);
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port='5000')

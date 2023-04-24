@@ -123,8 +123,11 @@ async function createColumn () {
 }
 
 async function get_board_data() {
-    const board_data = $.get('/api/board_data');
-    return board_data;
+    const boardname = $('.active').text();
+    const res = await $.post('/api/board_data', {
+	    board: boardname,
+    });
+    console.log(res);
 }
 
 
