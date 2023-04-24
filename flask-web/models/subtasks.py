@@ -16,6 +16,7 @@ class Subtask(baseMod, Base):
 
     def __init__(self, title, task_id, status=None, *args, **kwargs):
         """initializes a subtask instance"""
+        super().__init__(self, *args, **kwargs)
         self.title = title
         self.task_id = task_id
         if status is not None:

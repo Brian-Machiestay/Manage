@@ -8,6 +8,7 @@ from models.board import Board
 from models.items import Item
 from models.subtasks import Subtask
 from models.task import Task
+import json
 
 
 
@@ -99,7 +100,34 @@ def createColumn():
         res = make_response(jsonify({"error": "This column already exists"}))
         return res, 400
 
-
+@app.route('/api/createTask', methods=['POST'], strict_slashes=False)
+def createTask():
+    """create a task"""
+    print(request.form)
+    bdName = request.form.get('boardName', None)
+    itName = request.form.get('item', None)
+    if itName is None:
+        res = make_response(jsonify({"error": "create an item"}))
+        return res, 400
+    subtasks = request.form.get('subtasks', None)
+    item = Item.get_item_by_name(itName, bdName)
+    des = request.form.get('des', None)
+    if des is None or des.strip() == '':
+        print('bad description')
+        res = make_response(jsonify({"error": "Description must be provided"}))
+        return res, 400
+    title = request.form.get('task_title', None)
+    if title is None or title.strip() == '':
+        print('bad title')
+        res = make_response(jsonify({"error": "title must be provided"}))
+        return res, 400
+    task = Task(title, des, item.id)
+    task.save()
+    for sub in json.loads(subtasks):
+        sb = Subtask(sub, task.id)
+        sb.save()
+    return(jsonify({'success': 'task created successfully'}))
+    
 
 
 

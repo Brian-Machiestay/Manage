@@ -34,16 +34,24 @@ async function createTask() {
     console.log(title);
     const des = $('.task_des').val();
     const item = $('#create_task_status').find(':selected').val();
-    taskOb = {
+    const taskOb = {
 	boardName: boardName,
 	item: item,
-	task_title: title,
-	des: des,
-	subtasks: [],
+	task_title: title.trim(),
+	des: des.trim(),
     }
+    const sub = []
     for (let i of $('.create_sub_tasksop')) {
 	const val = $(i).val();
-	if (val.trim() !== '') taskOb.subtasks.push(val.trim());
+	if (val.trim() !== '') sub.push(val.trim());
+    }
+    taskOb.subtasks = JSON.stringify(sub);
+    try{
+	const res = await $.post('/api/createTask', taskOb);
+	console.log(res);
+    } catch (e) {
+	console.log(e);
+	
     }
     console.log(taskOb);
 }

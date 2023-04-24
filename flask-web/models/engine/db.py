@@ -75,3 +75,10 @@ class DBStorage:
         """return board objs not equal this board"""
         obj = self.__session.query(Board).filter(Board.name != name).limit(2).all()
         return obj
+
+    def get_item_by_name(self, name, boardName):
+        """return the item based on this id"""
+        obj = self.__session.query(Item).join(Board, Item.board_id==Board.id)\
+                                        .filter(Item.name==name,
+                                                Board.name==boardName).first()
+        return obj
