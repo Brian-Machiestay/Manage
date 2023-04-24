@@ -42,7 +42,8 @@ async function createTask() {
 	subtasks: [],
     }
     for (let i of $('.create_sub_tasksop')) {
-	if ($(i).val().strip() !== '') taskOb.subtasks.push($(i).val());
+	const val = $(i).val();
+	if (val.trim() !== '') taskOb.subtasks.push(val.trim());
     }
     console.log(taskOb);
 }
