@@ -261,7 +261,10 @@ aside p {
 #createTaskWindow .add_sub_task p {
     color: var(--mov_color);
 }
+
+
 /* change color for sub task close button */
+
 .fa-times {
     color: rgb(174, 172, 172);
     cursor: pointer;

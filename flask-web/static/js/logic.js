@@ -122,6 +122,11 @@ async function createColumn () {
     }
 }
 
+async function get_board_data() {
+    const board_data = $.get('/api/board_data');
+    return board_data;
+}
+
 
 // add a subtask
 function addSubTask() {
