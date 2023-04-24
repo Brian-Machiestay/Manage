@@ -64,7 +64,8 @@ def getBoard(name):
         res = make_response(jsonify({"error": "This board already exists"}))
         return res, 400
     other_bd = Board.get_other_boards(bd.name)
-    return (render_template('board.html', bd=bd, other_bd=other_bd))
+    uid = uuid4()
+    return (render_template('board.html', bd=bd, other_bd=other_bd, uid=uid))
 
 @app.route('/boards')
 def allBoards():
@@ -106,7 +107,7 @@ def createTask():
     print(request.form)
     bdName = request.form.get('boardName', None)
     itName = request.form.get('item', None)
-    if itName is None:
+    if itName == '' or itName is None:
         res = make_response(jsonify({"error": "create an item"}))
         return res, 400
     subtasks = request.form.get('subtasks', None)

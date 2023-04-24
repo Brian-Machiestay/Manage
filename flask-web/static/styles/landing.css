@@ -330,6 +330,14 @@ aside p {
 }
 
 /* define styles for success and danger operations */
+#createTaskWindow p.success {
+    color: green;
+}
+
+#createTaskWindow p.danger {
+    color: red;
+}
+
 .success {
     color: green;
 }

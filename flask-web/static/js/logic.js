@@ -49,9 +49,20 @@ async function createTask() {
     try{
 	const res = await $.post('/api/createTask', taskOb);
 	console.log(res);
+	$('.createTaskInfoma').text('column created successfully');
+	$('.createTaskInfoma').addClass('success');
+	$('.createTaskInfoma').removeClass('danger');
+	setTimeout(() => {
+	    $('.createTaskInfoma').text('');
+	}, 5000);
     } catch (e) {
 	console.log(e);
-	
+	$('.createTaskInfoma').text(e.responseJSON.error);
+	$('.createTaskInfoma').addClass('danger');
+	$('.createTaskInfoma').removeClass('success');
+	setTimeout(() => {
+	    $('.createTaskInfoma').text('');
+	}, 5000);
     }
     console.log(taskOb);
 }
@@ -69,6 +80,12 @@ async function createBoard () {
 	window.location.href = '/boards/' + res.name;
     } catch(e) {
 	console.log(e.responseJSON);
+	$('.createBoardInfo').text(e.responseJSON.error);
+	$('.createBoardInfo').addClass('danger');
+	$('.createBoardInfo').removeClass('success');
+	setTimeout(() => {
+	    $('.createBoardInfo').text('');
+	}, 5000);
     }
 }
 
