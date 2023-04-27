@@ -97,7 +97,10 @@ async function createBoard () {
 function viewTask(e) {
     const task_id = e.currentTarget.id;
     const item_id = $(`#${task_id}`).parent().attr('id');
+    const task = boardData[item_id]['tasks'][task_id];
     console.log(boardData[item_id]['tasks'][task_id]);
+    $('.taskTitle').text(task.title);
+    $('.task_description').text(task.des);
 }
 
 
