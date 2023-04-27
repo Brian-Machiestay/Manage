@@ -50,6 +50,7 @@ async function createTask() {
 	if (val.trim() !== '') sub.push(val.trim());
     }
     taskOb.subtasks = JSON.stringify(sub);
+
     try{
 	const res = await $.post('/api/createTask', taskOb);
 	console.log(res);
@@ -101,6 +102,18 @@ function viewTask(e) {
     console.log(boardData[item_id]['tasks'][task_id]);
     $('.taskTitle').text(task.title);
     $('.task_description').text(task.des);
+    for (const key of Object.keys(task['subtasks'])) {
+	console.log(key)
+	if (task['subtasks'][key]['status'] === 'checked') {
+	    $('#modal_sub_tasks').append('<input type="checkbox" id="sub1" checked disabled="disabled">')
+	    $('#modal_sub_tasks').append('<p class="subtaskcontent done">Research competitor pricing and business models</p><br>')
+	}
+	else {
+	    $('#modal_sub_tasks').append('<input type="checkbox" id="sub1" disabled="disabled">')
+	    $('#modal_sub_tasks').append('<p class="subtaskcontent">Research competitor pricing and business models</p><br>')
+	}
+    }
+    $('.statusInfo').text(boardData[item_id]['name']);
 }
 
 
