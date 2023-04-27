@@ -102,15 +102,16 @@ function viewTask(e) {
     console.log(boardData[item_id]['tasks'][task_id]);
     $('.taskTitle').text(task.title);
     $('.task_description').text(task.des);
+    $('#subt').empty();
     for (const key of Object.keys(task['subtasks'])) {
 	console.log(key)
 	if (task['subtasks'][key]['status'] === 'checked') {
-	    $('#modal_sub_tasks').append('<input type="checkbox" id="sub1" checked disabled="disabled">')
-	    $('#modal_sub_tasks').append('<p class="subtaskcontent done">Research competitor pricing and business models</p><br>')
+	    $('#subt').append('<input type="checkbox" class="rmsub", id="sub1" checked disabled="disabled">')
+	    $('#subt').append(`<p class="subtaskcontent done rmsub">${task['subtasks'][key]['title']}</p><br>`)
 	}
 	else {
-	    $('#modal_sub_tasks').append('<input type="checkbox" id="sub1" disabled="disabled">')
-	    $('#modal_sub_tasks').append('<p class="subtaskcontent">Research competitor pricing and business models</p><br>')
+	    $('#subt').append('<input type="checkbox" id="sub1" disabled="disabled">')
+	    $('#subt').append(`<p class="subtaskcontent">${task['subtasks'][key]['title']}</p><br>`)
 	}
     }
     $('.statusInfo').text(boardData[item_id]['name']);
