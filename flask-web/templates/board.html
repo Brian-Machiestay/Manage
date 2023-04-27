@@ -40,9 +40,9 @@
     <aside class="task_aside">
       {% for item in bd.items %}
       <aside class="task_aside{{ loop.index }} task_aside-item">
-        <p><i class="fa fa-circle" aria-hidden="true"></i> {{ item.name }} ({{ item.tasks|length }})</p>
+        <p><i class="fa fa-circle" aria-hidden="true" id="{{ item.id }}"></i> {{ item.name }} ({{ item.tasks|length }})</p>
 	{% for task in item.tasks %}
-        <div class="task" data-toggle="modal" data-target="#viewTaskWindow">
+        <div class="task" data-toggle="modal" data-target="#viewTaskWindow" id="{{ task.id }}">
           <p class="task_head">{{ task.title }}</p>
           <p class="subtask_status">0 out of 3 tasks</p>
         </div>
