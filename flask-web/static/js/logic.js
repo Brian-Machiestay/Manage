@@ -53,7 +53,7 @@ async function createTask() {
     try{
 	const res = await $.post('/api/createTask', taskOb);
 	console.log(res);
-	$('.createTaskInfoma').text('column created successfully');
+	$('.createTaskInfoma').text('task created successfully');
 	$('.createTaskInfoma').addClass('success');
 	$('.createTaskInfoma').removeClass('danger');
 	setTimeout(() => {
@@ -92,6 +92,13 @@ async function createBoard () {
 	}, 5000);
     }
 }
+
+// view a task
+function viewTask(e) {
+    const id = e.currentTarget.id;
+    
+}
+
 
 
 // create a new column
@@ -133,11 +140,6 @@ async function get_board_data() {
 	board: boardname,
     });
     console.log(res);
-}
-
-// view a task
-function viewTask() {
-    
 }
 
 
@@ -199,3 +201,6 @@ $('.removeTask').click(removeSubTask);
 
 // create a task
 $('.create_task').click(createTask);
+
+// listen on task click
+$('.task').click(viewTask);
