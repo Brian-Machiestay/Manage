@@ -140,19 +140,20 @@ def get_board_data():
     print(bd.items)
     ob = dict()
     for it in bd.items:
-        tasks = []
+        tasks = dict()
         for tk in it.tasks:
             task_dict = dict()
             task_dict['title'] = tk.title
             task_dict['des'] = tk.description
-            task_dict['subtasks'] = []
+            task_dict['subtasks'] = dict()
             for sub in tk.subtasks:
                 sub_dict = dict()
                 sub_dict['title'] = sub.title
                 sub_dict['status'] = sub.status
-                task_dict['subtasks'].append(sub_dict)
-            tasks.append(task_dict)
-        ob[it.name] = tasks
+                task_dict['subtasks'][sub.id] = sub_dict
+            tasks[tk.id] = task_dict
+        ob[it.id]['name'] = it.name
+        ob[it.id]['tasks'] = tasks
     print(ob)
     return(ob)
 
