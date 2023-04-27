@@ -95,8 +95,9 @@ async function createBoard () {
 
 // view a task
 function viewTask(e) {
-    const id = e.currentTarget.id;
-    
+    const task_id = e.currentTarget.id;
+    const item_id = $(`#${task_id}`).parent().attr('id');
+    console.log(boardData[item_id]['tasks'][task_id]);
 }
 
 
@@ -139,7 +140,7 @@ async function get_board_data() {
     const res = await $.post('/api/board_data', {
 	board: boardname,
     });
-    console.log(res);
+    return res;
 }
 
 
@@ -174,8 +175,8 @@ function showSidebar() {
 // load the current's board data
 get_board_data().then((res) => {
     boardData = res;
+    console.log(boardData);
 });
-console.log(boardData);
 
 // toggles the theme between dark and light mode
 $('.fa-toggle-on, .fa-toggle-off').click(changeTheme);
