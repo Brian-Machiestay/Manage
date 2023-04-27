@@ -140,6 +140,7 @@ def get_board_data():
     print(bd.items)
     ob = dict()
     for it in bd.items:
+        ob[it.id] = dict()
         tasks = dict()
         for tk in it.tasks:
             task_dict = dict()
