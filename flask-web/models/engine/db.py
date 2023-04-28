@@ -82,3 +82,8 @@ class DBStorage:
                                         .filter(Item.name==name,
                                                 Board.name==boardName).first()
         return obj
+
+    def count(self, cls):
+        """return the number of objects in cls"""
+        cnt = self.__session.query(Board).count()
+        return cnt

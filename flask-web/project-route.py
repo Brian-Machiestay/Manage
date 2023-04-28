@@ -21,13 +21,15 @@ def root():
     bd = Board.board('uuiddeessfff')
     print(bd.name)
     uid = uuid4()
-    return(render_template('index.html', uid=uid))
+    return(render_template('index.html', uid=uid, count=count))
 
 
 @app.route('/boards', strict_slashes=False)
 def boards():
     """render the all boards page"""
-    return(render_template('index.html'))
+    count = Board.count_boards()
+    boards = Board.boards()
+    return(render_template('allboard.html', count=count, boards=boards))
 
 @app.route('/createBoard', methods=['POST'], strict_slashes=False)
 def createBoard():
@@ -65,12 +67,15 @@ def getBoard(name):
         return res, 400
     other_bd = Board.get_other_boards(bd.name)
     uid = uuid4()
-    return (render_template('board.html', bd=bd, other_bd=other_bd, uid=uid))
+    count = Board.count_boards()
+    return (render_template('board.html', bd=bd, other_bd=other_bd, uid=uid, count=count))
 
 @app.route('/boards')
 def allBoards():
     """render all boards"""
-    return (render_template('all_boards.html'))
+    boards = Board.boards()
+    count = Board.count_boards()
+    return (render_template('allboards.html', count=count, boards=boards))
 
 
 # define all api routes

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="../static/styles/reset.css?{{ uid }}" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../static/styles/landing.css?{{ uid }}" />
+  <link rel="stylesheet" href="../static/styles/board.css?{{ uid }}" />
+  <title>Manage</title>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1 class="logo_item1">Manage</h1>
+      <h1 class="logo_item2">All Boards</h1>
+    </div>
+  </header>
+
+  <!-- the side bar-->
+  <section class="sidebar_section">
+    <aside class="side_bar">
+      <ul class="list-group">
+        <a href="#" class="list-group-item"><h1 class="logo_item1">Manage</h1></a>
+        <a href="/boards" class="list-group-item">ALL Boards({{ count }})</a>
+        <li class="list-group-item boardlinks create_board" data-toggle="modal" data-target="#createBoardWindow">+Create New Board</li>
+        <li class="list-group-item last"><i id = "toggle" class="fa fa-toggle-off fa-2x" aria-hidden="true"></i></li>
+        <li class="list-group-item side"><i id = "hide" class="fa fa-eye-slash" aria-hidden="true"></i> Hide sidebar</li>
+      </ul>
+    </aside>
+    <div class="showbar"><i id = "show" class="fa fa-eye" aria-hidden="true"></i></div>
+    <aside class="task_aside">
+      <aside class="task_aside1 task_aside-item">
+	{% for bd in boards %}
+        <a href="/boards/{{ bd.name.replace(' ', '_') }}"><div class="task" data-toggle="modal">
+          <p class="task_head">{{ bd.name }}</p>
+        </div></a>
+	{% endfor %}
+      </aside>
+
+      <!-- modal to create a board -->
+      <div class="modal fade" id="createBoardWindow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <h5 class="modal-title" id="exampleModalLongTitle">Create a new board</h5>
+	    </div>
+	    <div class="modal-body">
+	      <label for="title">Name</label><br>
+	      <input type="text" class="title" id='boardName'><br>
+	      <p class='createBoardInfo'></p>
+	    </div>
+	    <div class="modal-footer">
+	      <button type="button" class="btn btn-primary btn-lg btn-block create_task" id='createBoard'><p>Create Board</p></button>
+	    </div>
+	  </div>
+	</div>
+      </div>
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="../static/js/logic.js?{{ uid }}"></script>
+</body>
+</html>

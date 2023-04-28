@@ -42,3 +42,9 @@ class Board(baseMod, Base):
         """return two boards whose name do not equal name"""
         bd = models.storage.get_other_boards(name)
         return bd
+
+    @classmethod
+    def count_boards(cls):
+        """count the number of boards"""
+        cnt = models.storage.count(Board)
+        return cnt

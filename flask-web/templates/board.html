@@ -26,7 +26,7 @@
     <aside class="side_bar">
       <ul class="list-group">
         <a href="#" class="list-group-item"><h1 class="logo_item1">Manage</h1></a>
-        <a href="#" class="list-group-item">ALL Boards(1)</a>
+        <a href="/boards" class="list-group-item">ALL Boards({{ count }})</a>
         <a href="/boards/{{ bd.name.replace(' ', '_') }}" id ="dark-theme-active" class=" dark-theme list-group-item boardlinks active">{{ bd.name }}</a>
 	{% for board in other_bd %}
         <a href="/boards/{{ board.name.replace(' ', '_') }}" class="list-group-item boardlinks">{{ board.name }}</a>
