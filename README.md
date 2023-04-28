@@ -18,6 +18,9 @@ Manage is a full stack web application built to manage all kinds of projects. Th
   
 ## Installation    
  The website does not require installation
+ 
+ ## Screenshots  
+ ![screenshot](./assets/images/screen1.jpg)
 ## Usage  
   This application can be used and modified by anyone  
 ## License  
