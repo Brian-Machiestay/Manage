@@ -60,6 +60,12 @@ async function createTask() {
 	}
 	boardData[res['item_id']]['tasks'][res['task_id']] = res['task']
 	console.log(boardData);
+	$(`#${res['item_id']}`).append(
+	    ` <div class="task" data-toggle="modal" data-target="#viewTaskWindow" id="${res['task_id']}">
+          <p class="task_head">${res['task']['title']}</p>
+          <p class="subtask_status">0 out of 3 tasks</p>
+        </div>`
+	)
 	$('.createTaskInfoma').text('task created successfully');
 	$('.createTaskInfoma').addClass('success');
 	$('.createTaskInfoma').removeClass('danger');
