@@ -143,7 +143,7 @@ async function createColumn () {
 	    name: colName,
 	});
 	console.log(res);
-	const column = $('<aside class="task_aside1 task_aside-item"></aside>').append(`<p><i class="fa fa-circle" aria-hidden="true"></i> ${colName} (0)</p>`);
+	const column = $(`<aside class="task_aside1 task_aside-item" id=${res.id}></aside>`).append(`<p><i class="fa fa-circle" aria-hidden="true"></i> ${colName} (0)</p>`);
 	column.insertBefore('#create_column');
 	$('.createColumnInfo').text('column created successfully');
 	$('.createColumnInfo').addClass('success');

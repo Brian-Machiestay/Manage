@@ -18,10 +18,10 @@ app = Flask(__name__)
 @app.route('/', strict_slashes=False)
 def root():
     """queries the root of this project"""
-    bd = Board.board('uuiddeessfff')
-    print(bd.name)
     uid = uuid4()
-    return(render_template('index.html', uid=uid, count=count))
+    count = Board.count_boards()
+    boards = Board.boards()
+    return(render_template('allboard.html', uid=uid, count=count, boards=boards))
 
 
 @app.route('/boards', strict_slashes=False)
@@ -100,7 +100,8 @@ def createColumn():
         col.save()
         print(col)
         return(jsonify({
-            'name': col.name
+            'name': col.name,
+            'id': col.id
         }))
     except(Exception):
         res = make_response(jsonify({"error": "This column already exists"}))
