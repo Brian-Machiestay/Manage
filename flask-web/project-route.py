@@ -127,7 +127,20 @@ def createTask():
     for sub in json.loads(subtasks):
         sb = Subtask(sub, task.id)
         sb.save()
-    return(jsonify({'success': 'task created successfully'}))
+    tk = Task.get_task(task.id)
+    task = dict()
+    task_dict = dict()
+    task_dict['title'] = tk.title
+    task_dict['des'] = tk.description
+    task_dict['subtasks'] = dict()
+    for sub in tk.subtasks:
+        sub_dict = dict()
+        sub_dict['title'] = sub.title
+        sub_dict['status'] = sub.status
+        task_dict['subtasks'][sub.id] = sub_dict
+    task[tk.id] = task_dict
+    print(task_dict)
+    return(task_dict)
 
 
 

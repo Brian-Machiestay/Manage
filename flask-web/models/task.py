@@ -4,6 +4,7 @@
 from .base import Base, baseMod
 from sqlalchemy import String, Numeric, Column, ForeignKey
 from sqlalchemy.orm import relationship
+import models
 
 class Task(baseMod, Base):
     """define methods on this class's instances"""
@@ -22,3 +23,8 @@ class Task(baseMod, Base):
         self.title = tit
         self.description = des
         self.item_id = item_id
+
+    @classmethod
+    def get_task(cls, id):
+        """return a task based on its id"""
+        return models.storage.one(cls, id)
