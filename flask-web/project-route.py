@@ -128,7 +128,7 @@ def createTask():
         sb = Subtask(sub, task.id)
         sb.save()
     tk = Task.get_task(task.id)
-    tk_d = dict()
+    it_d = dict()
     task_dict = dict()
     task_dict['title'] = tk.title
     task_dict['des'] = tk.description
@@ -138,9 +138,12 @@ def createTask():
         sub_dict['title'] = sub.title
         sub_dict['status'] = sub.status
         task_dict['subtasks'][sub.id] = sub_dict
-    tk_d[tk.id] = task_dict
-    print(task_dict)
-    return(task_dict)
+    it_d['item_id'] = item.id
+    it_d['task'] = task_dict
+    it_d['task_id'] = tk.id
+    it_d['name'] = item.name
+    print(it_d)
+    return(it_d)
 
 
 

@@ -53,7 +53,13 @@ async function createTask() {
 
     try{
 	const res = await $.post('/api/createTask', taskOb);
-	console.log(res);
+	if (!boardData.hasOwnProperty(res['item_id'])) {
+	    boardData[res['item_id']] = {}
+	    boardData[res['item_id']]['name'] = res['name']
+	    boardData[res['item_id']]['tasks'] = {}
+	}
+	boardData[res['item_id']]['tasks'][res['task_id']] = res['task']
+	console.log(boardData);
 	$('.createTaskInfoma').text('task created successfully');
 	$('.createTaskInfoma').addClass('success');
 	$('.createTaskInfoma').removeClass('danger');
