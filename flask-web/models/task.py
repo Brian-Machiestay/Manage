@@ -25,6 +25,6 @@ class Task(baseMod, Base):
         self.item_id = item_id
 
     @classmethod
-    def get_task(cls, id):
+    def get_task(cls, user_id, id):
         """return a task based on its id"""
-        return models.storage.one(cls, id)
+        return models.storage.one(cls, user_id, id)

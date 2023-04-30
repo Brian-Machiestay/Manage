@@ -56,8 +56,11 @@ def createColumn():
     elif colname.strip() == '':
         res = make_response(jsonify({"error": "Column name cannot be null"}))
         return res, 400
-
-    bd = Board.board_by_name(boardname.strip())
+    col = Item.get_item_by_name(usr.id, colname.strip(), boardname.strip())
+    if col:
+        res = make_response(jsonify({"error": "Column names must be unique"}))
+        return res, 400
+    bd = Board.board_by_name(usr.id, boardname.strip())
     print('board: {}'.format(bd))
     col = Item(colname.strip(), bd.id)
     print('item: {}'.format(col))
@@ -69,12 +72,14 @@ def createColumn():
             'id': col.id
         }))
     except(Exception):
-        res = make_response(jsonify({"error": "This column already exists"}))
+        res = make_response(jsonify({"error": "Cannot create column"}))
         return res, 400
 
 @app_views.route('/createTask', methods=['POST'], strict_slashes=False)
+@login_required
 def createTask():
     """create a task"""
+    usr = current_user
     print(request.form)
     bdName = request.form.get('boardName', None)
     itName = request.form.get('item', None)
@@ -82,7 +87,7 @@ def createTask():
         res = make_response(jsonify({"error": "create an item"}))
         return res, 400
     subtasks = request.form.get('subtasks', None)
-    item = Item.get_item_by_name(itName, bdName)
+    item = Item.get_item_by_name(usr.id, itName, bdName)
     des = request.form.get('des', None)
     if des is None or des.strip() == '':
         print('bad description')
@@ -98,7 +103,7 @@ def createTask():
     for sub in json.loads(subtasks):
         sb = Subtask(sub, task.id)
         sb.save()
-    tk = Task.get_task(task.id)
+    tk = Task.get_task(usr.id, task.id)
     it_d = dict()
     task_dict = dict()
     task_dict['title'] = tk.title
@@ -119,11 +124,13 @@ def createTask():
 
 
 @app_views.route('/board_data', methods=['POST'], strict_slashes=False)
+@login_required
 def get_board_data():
     """return all data assiocated with this board"""
+    usr = current_user
     bdName = request.form.get('board', None)
     print('board name: {}'.format(bdName))
-    bd = Board.board_by_name(bdName)
+    bd = Board.board_by_name(usr.id, bdName)
     print(bd.items)
     ob = dict()
     for it in bd.items:

@@ -65,9 +65,7 @@ class DBStorage:
 
     def one(self, cls, user_id, id):
         """return one object of a class"""
-        obj = self.__session.query(cls).join(User, User.id==Board.user_id)\
-                                       .filter(User.id==user_id,
-                                               Board.id==id).first()
+        obj = self.__session.query(cls).filter_by(id=id).first()
         return obj
 
     def board_by_name(self, user_id, name):
@@ -87,8 +85,8 @@ class DBStorage:
 
     def get_item_by_name(self, user_id, name, boardName):
         """return the item based on this id"""
-        obj = self.__session.query(Item).join(User, User.id==Board.user_id)\
-                                        .join(Board, Item.board_id==Board.id)\
+        obj = self.__session.query(Item).join(Board, Item.board_id==Board.id)\
+                                        .join(User, User.id==Board.user_id)\
                                         .filter(Item.name==name,
                                                 Board.name==boardName,
                                                 User.id==user_id).first()
