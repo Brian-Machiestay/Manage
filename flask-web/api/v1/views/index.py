@@ -34,11 +34,11 @@ def createBoard():
     bd = Board(bd_name.strip(), usr.id)
     try:
         bd.save()
-        print(bd)
         return(jsonify({
             'name': bd.name.replace(' ', '_')
         }))
-    except(Exception):
+    except(Exception) as e:
+        print(e)
         res = make_response(jsonify({"error": "Cannot create board"}))
         return res, 400
 
@@ -72,6 +72,7 @@ def createColumn():
             'id': col.id
         }))
     except(Exception):
+        raise Exception
         res = make_response(jsonify({"error": "Cannot create column"}))
         return res, 400
 

@@ -115,3 +115,6 @@ body {
 .signup_url a {
     color: rgba(255, 0, 0, 0.5);
 }
+.field.in-signup {
+    margin-top: 5px;
+}

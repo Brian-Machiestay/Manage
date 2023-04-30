@@ -10,7 +10,7 @@ class Board(baseMod, Base):
     """defines a board table"""
     __tablename__ = 'board'
     id = Column(String(132), primary_key=True, nullable=False, unique=True)
-    name = Column(String(64), nullable=False, unique=True)
+    name = Column(String(64), nullable=False)
     user_id = Column(String(64), ForeignKey('users.id'), nullable=False)
     items = relationship('Item', back_populates='board')
     user = relationship('User', back_populates='boards')

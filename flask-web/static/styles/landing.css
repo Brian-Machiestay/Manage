@@ -207,7 +207,7 @@ aside p {
 }
 
 #viewTaskWindow .modal-title {
-    color: white;
+    color: var(--txt-color);
 }
 .subtaskcontent {
     display: inline;
@@ -242,11 +242,11 @@ aside p {
 .create_sub_tasksop {
     width: 95%;
 }
-#createTaskWindow .modal-content {
+#createTaskWindow .modal-content, #createBoardWindow .modal-content, #createColumnWindow .modal-content {
     background-color: var(--bg-color);
 }
 
-#createTaskWindow .add_sub_task, #createTaskWindow .create_task {
+#createTaskWindow .add_sub_task, #createTaskWindow .create_task, #createBoard, #createColumn {
     margin-top: 10px;
     height: 30px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -264,6 +264,16 @@ aside p {
     color: var(--mov_color);
 }
 
+/* modal view for create board styles and overrides */
+#createBoard {
+    background-color: var(--mov_color);
+}
+#createBoard p, #createColumn p {
+    color: white;
+}
+
+
+
 
 /* change color for sub task close button */
 
@@ -272,7 +282,7 @@ aside p {
     cursor: pointer;
 }
 
-#createTaskWindow .create_task {
+#createTaskWindow .create_task, #createColumn {
     border: none;
     background-color: var(--mov_color);
 }

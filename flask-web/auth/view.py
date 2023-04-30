@@ -42,6 +42,15 @@ def signup_post():
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
+    if email is None or email == '':
+        flash('Enter a valid email and password')
+        return redirect(url_for('auth.signup'))
+    if password is None or password == '':
+        flash('Enter a valid email and password')
+        return redirect(url_for('auth.signup'))
+    if name is None or name == '':
+        flash('Enter a name')
+        return redirect(url_for('auth.signup'))
     usr = models.storage.user_by_email(email)
     if usr:
         flash('Email address already exists')
