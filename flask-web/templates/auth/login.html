@@ -6,23 +6,23 @@
   <div class="box">
     {% with messages = get_flashed_messages() %}
     {% if messages %}
-    <div class="notification is-danger">
+    <div class="notification danger">
       {{ messages[0] }}
     </div>
     {% endif %}
     {% endwith %}
-    <form method="POST" action="/login">
+    <form method="POST" action="/login" class='form-login'>
       <div class="field">
 	<div class="control">
 	  <label class='email-label input-label' for='email'>Email</label>
-	  <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
+	  <input class="input is-large" type="email" name="email" placeholder="" autofocus="">
 	</div>
       </div>
 
       <div class="field">
 	<div class="control">
 	  <label class='pass-label input-label' for='password'>Password</label>
-	  <input class="input is-large" type="password" name="password" placeholder="Your Password">
+	  <input class="input is-large" type="password" name="password" placeholder="">
 	</div>
       </div>
       <div class="field">
@@ -31,7 +31,8 @@
 	  Remember me
 	</label>
       </div>
-      <button class="button is-block is-info is-large is-fullwidth">Login</button>
+      <button class="button is-block is-info is-large is-fullwidth">Log in</button>
+      <p class="signup_url">First time? <a href='/signup'>Sign up</a></p>
     </form>
   </div>
 </div>
