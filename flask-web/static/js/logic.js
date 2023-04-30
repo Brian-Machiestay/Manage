@@ -2,31 +2,50 @@
 let boardData = null;
 
 
-// function enables theme toggling
-function changeTheme(event) {
+// render a light theme
+function lightTheme() {
     const root = $(':root');
     const toggle = $('#toggle');
-    if (root.css('--mov_color') == 'rgb(99, 99, 236)') {
-         root.css('--mov_color', 'rgb(123, 123, 223)');
-         root.css('--bg-color', 'rgb(40, 40, 74)');
-         root.css('--txt-color', 'rgb(255, 255, 255)');
-         root.css('--task-color', 'rgb(51, 51, 92)');
-         root.css('--sub-task-color', 'rgba(255, 255, 255, 0.41)');
-         root.css('--box-shadow', '2px 2px 2px rgba(0, 0, 0, 0.387)');
-         root.css('--sidebar-border', '1px solid rgba(242, 237, 237, 0.12)');
-         root.css('--column-color', 'rgb(69, 69, 106)')
-         toggle.addClass('fa-toggle-on').removeClass('fa-toggle-off');
+    root.css('--mov_color', 'rgb(99, 99, 236)');
+    root.css('--bg-color', 'rgb(227, 247, 246)');
+    root.css('--txt-color', 'black');
+    root.css('--task-color', 'white');
+    root.css('--sub-task-color', 'rgba(0, 0, 0, 0.387)');
+    root.css('--box-shadow', '3px 3px 2px #aaaaaaa0');
+    root.css('--sidebar-border', '1px solid rgba(242, 237, 237, 0.571)');
+    root.css('--column-color', 'rgb(216, 237, 236)');
+    toggle.addClass('fa-toggle-off').removeClass('fa-toggle-on');
+}
+
+
+// render a dark theme
+function darkTheme() {
+    const root = $(':root');
+    const toggle = $('#toggle');
+    root.css('--mov_color', 'rgb(123, 123, 223)');
+    root.css('--bg-color', 'rgb(40, 40, 74)');
+    root.css('--txt-color', 'rgb(255, 255, 255)');
+    root.css('--task-color', 'rgb(51, 51, 92)');
+    root.css('--sub-task-color', 'rgba(255, 255, 255, 0.41)');
+    root.css('--box-shadow', '2px 2px 2px rgba(0, 0, 0, 0.387)');
+    root.css('--sidebar-border', '1px solid rgba(242, 237, 237, 0.12)');
+    root.css('--column-color', 'rgb(69, 69, 106)')
+    toggle.addClass('fa-toggle-on').removeClass('fa-toggle-off');
+}
+
+
+// function enables theme toggling
+function changeTheme(event) {
+    const theme = localStorage.getItem('theme')
+    const root = $(':root');
+    const toggle = $('#toggle');
+    if (theme === 'dark') {
+        localStorage.setItem('theme', 'light');
+	lightTheme();
     }
-    else {
-        root.css('--mov_color', 'rgb(99, 99, 236)');
-        root.css('--bg-color', 'rgb(227, 247, 246)');
-        root.css('--txt-color', 'black');
-        root.css('--task-color', 'white');
-        root.css('--sub-task-color', 'rgba(0, 0, 0, 0.387)');
-        root.css('--box-shadow', '3px 3px 2px #aaaaaaa0');
-        root.css('--sidebar-border', '1px solid rgba(242, 237, 237, 0.571)');
-        root.css('--column-color', 'rgb(216, 237, 236)');
-        toggle.addClass('fa-toggle-off').removeClass('fa-toggle-on');
+    else if (theme === 'light'){
+        localStorage.setItem('theme', 'dark');
+	darkTheme();
     }
 }
 
@@ -204,6 +223,12 @@ function showSidebar() {
     $('.side_bar').css('display', 'block');
     $('.showbar').css('display', 'none');
 }
+
+// check and set the theme for the user
+const theme = localStorage.getItem('theme');
+if (theme === null) localStorage.setItem('theme', 'light')
+else if (theme === 'dark') darkTheme();
+else lightTheme();
 
 
 // load the current's board data
