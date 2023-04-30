@@ -7,6 +7,7 @@ from models.base import Base
 from models.board import Board
 from models.items import Item
 from models.task import Task
+from models.user import User
 from models.subtasks import Subtask
 import sqlalchemy
 
@@ -87,3 +88,9 @@ class DBStorage:
         """return the number of objects in cls"""
         cnt = self.__session.query(Board).count()
         return cnt
+
+
+    # user management methods
+    def user_by_email(self, email):
+        """return user with this email"""
+        return self.__session.query(User).filter_by(email=email).first()

@@ -16,6 +16,7 @@ from auth.view import auth_blueprint
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+app.config['SECRET_KEY'] = 'brian'
 app.register_blueprint(app_views)
 app.register_blueprint(auth_blueprint)
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
