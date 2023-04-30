@@ -14,6 +14,20 @@ def login():
     """render the login page"""
     return(render_template('auth/login.html'))
 
+@auth_blueprint.route('/login', methods=['POST'])
+def login_post():
+    """handle post request for login"""
+    email = request.form.get('email')
+    password = request.form.get('password')
+    remember = True if request.form.get('remember') else False
+
+    usr = models.storage.user_by_email(email)
+    if not usr or not check_password_hash(usr.password, password):
+        flash('Please check your login details and try again.')
+        return redirect(url_for('auth.login'))
+
+    return redirect(url_for('root'))
+
 @auth_blueprint.route('/signup')
 def signup():
     """render the signup page"""
