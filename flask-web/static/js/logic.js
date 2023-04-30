@@ -52,7 +52,7 @@ async function createTask() {
     taskOb.subtasks = JSON.stringify(sub);
 
     try{
-	const res = await $.post('/api/createTask', taskOb);
+	const res = await $.post('/api/v1/createTask', taskOb);
 	if (!boardData.hasOwnProperty(res['item_id'])) {
 	    boardData[res['item_id']] = {}
 	    boardData[res['item_id']]['name'] = res['name']
@@ -90,7 +90,7 @@ async function createBoard () {
     const boardName = $('#boardName').val();
     console.log(boardName);
     try{
-	const res = await $.post('/createBoard', {
+	const res = await $.post('/api/v1/createBoard', {
 	    name: boardName
 	});
 	console.log(res);
@@ -138,7 +138,7 @@ async function createColumn () {
     console.log(`board name: ${boardname}`);
     console.log(`column name: ${colName}`);
     try{
-	const res = await $.post('/api/createColumn', {
+	const res = await $.post('/api/v1/createColumn', {
 	    board: boardname,
 	    name: colName,
 	});
@@ -166,7 +166,7 @@ async function createColumn () {
 // get the board data from the backend
 async function get_board_data() {
     const boardname = $('.active').text();
-    const res = await $.post('/api/board_data', {
+    const res = await $.post('/api/v1/board_data', {
 	board: boardname,
     });
     return res;
