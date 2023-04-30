@@ -8,5 +8,8 @@ body {
 .section-form-container {
     width: 30%;
     height: 85%;
-    background-color: yellow;
+    background-color: #F6F6F6;
+    border-radius: 15px;
+    border: 1px solid #E0E0E0;
+    box-shadow: 2px 4px #E0E0E0;
 }
