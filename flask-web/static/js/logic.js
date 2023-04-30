@@ -224,11 +224,6 @@ function showSidebar() {
     $('.showbar').css('display', 'none');
 }
 
-// check and set the theme for the user
-const theme = localStorage.getItem('theme');
-if (theme === null) localStorage.setItem('theme', 'light')
-else if (theme === 'dark') darkTheme();
-else lightTheme();
 
 
 // load the current's board data
