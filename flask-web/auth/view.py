@@ -26,8 +26,6 @@ def login_post():
         flash('Please check your login details and try again.')
         return redirect(url_for('auth.login'))
     login_user(usr, remember=remember)
-    print('logged in')
-    print(current_user.is_authenticated)
     return redirect(url_for('root'))
 
 @auth_blueprint.route('/signup')

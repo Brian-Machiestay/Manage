@@ -12,4 +12,5 @@ class User(UserMixin, baseMod, Base):
     email = Column(String(64), nullable=False, unique=True)
     password = Column(String(100), nullable=False)
     name = Column(String(100), nullable=False)
+    boards = relationship('Board', back_populates='user')
 

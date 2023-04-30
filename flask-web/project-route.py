@@ -39,34 +39,37 @@ def root():
     """queries the root of this project"""
     print(current_user.is_authenticated)
     uid = uuid4()
-    count = Board.count_boards()
-    boards = Board.boards()
+    usr = current_user
+    count = Board.count_boards(usr.id)
+    boards = Board.boards(usr.id)
     return(render_template('allboard.html', uid=uid, count=count, boards=boards))
 
 
 @app.route('/boards', strict_slashes=False)
+@login_required
 def boards():
     """render the all boards page"""
-    count = Board.count_boards()
-    boards = Board.boards()
-    return(render_template('allboard.html', count=count, boards=boards))
+    usr = current_user
+    uid = uuid4()
+    count = Board.count_boards(usr.id)
+    boards = Board.boards(usr.id)
+    return(render_template('allboard.html', count=count, boards=boards, uid=uid))
 
 
 
 @app.route('/boards/<name>')
+@login_required
 def getBoard(name):
     """render this board"""
     print(name)
-    bd = Board.board_by_name(name.replace('_', ' '))
-    print('this is the board')
-    print(bd)
-    print('done printing')
+    usr = current_user
+    bd = Board.board_by_name(usr.id, name.replace('_', ' '))
     if bd is None:
         res = make_response(jsonify({"error": "This board already exists"}))
         return res, 400
-    other_bd = Board.get_other_boards(bd.name)
+    other_bd = Board.get_other_boards(usr.id, bd.name)
     uid = uuid4()
-    count = Board.count_boards()
+    count = Board.count_boards(usr.id)
     return (render_template('board.html', bd=bd, other_bd=other_bd, uid=uid, count=count))
 
 @app.route('/boards')

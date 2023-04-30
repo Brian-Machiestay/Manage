@@ -24,7 +24,7 @@ class Item(baseMod, Base):
 
 
     @classmethod
-    def get_item_by_name(cls, name, boardName):
+    def get_item_by_name(cls, user_id, name, boardName):
         """return an object in the items table with this id"""
-        obj = models.storage.get_item_by_name(name, boardName)
+        obj = models.storage.get_item_by_name(user_id, name, boardName)
         return obj

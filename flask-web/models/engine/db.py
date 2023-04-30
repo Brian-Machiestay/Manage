@@ -51,7 +51,7 @@ class DBStorage:
         """call remove() method on the private session attribute"""
         self.__session.remove()
 
-    def all(self, cls):
+    def all(self, cls, user_id):
         """
         Returns the object based on the class name and its and ID, or
         None if not found
@@ -59,34 +59,45 @@ class DBStorage:
         if cls not in classes.values():
             return None
 
-        all_cls = self.__session.query(cls).all()
+        all_cls = self.__session.query(Board).join(User, User.id==Board.user_id)\
+                                             .filter(User.id==user_id).all()
         return all_cls
 
-    def one(self, cls, id):
+    def one(self, cls, user_id, id):
         """return one object of a class"""
-        obj = self.__session.query(cls).filter_by(id=id).first()
+        obj = self.__session.query(cls).join(User, User.id==Board.user_id)\
+                                       .filter(User.id==user_id,
+                                               Board.id==id).first()
         return obj
 
-    def board_by_name(self, name):
+    def board_by_name(self, user_id, name):
         """return an object based on it's name"""
-        obj = self.__session.query(Board).filter_by(name=name).first()
+        obj = self.__session.query(Board).join(User, User.id==Board.user_id)\
+                                         .filter(User.id==user_id,
+                                                 Board.name==name).first()
         return obj
 
-    def get_other_boards(self, name):
+    def get_other_boards(self, user_id, name):
         """return board objs not equal this board"""
-        obj = self.__session.query(Board).filter(Board.name != name).limit(2).all()
+        obj = self.__session.query(Board).join(User, User.id==Board.user_id)\
+                                         .filter(Board.name != name,
+                                                 User.id==user_id)\
+                                         .limit(2).all()
         return obj
 
-    def get_item_by_name(self, name, boardName):
+    def get_item_by_name(self, user_id, name, boardName):
         """return the item based on this id"""
-        obj = self.__session.query(Item).join(Board, Item.board_id==Board.id)\
+        obj = self.__session.query(Item).join(User, User.id==Board.user_id)\
+                                        .join(Board, Item.board_id==Board.id)\
                                         .filter(Item.name==name,
-                                                Board.name==boardName).first()
+                                                Board.name==boardName,
+                                                User.id==user_id).first()
         return obj
 
-    def count(self, cls):
-        """return the number of objects in cls"""
-        cnt = self.__session.query(Board).count()
+    def count(self, cls, user_id):
+        """return the number of objects in cls for a particular user"""
+        cnt = self.__session.query(Board).join(User, User.id==Board.user_id)\
+                                         .filter(User.id==user_id).count()
         return cnt
 
 
