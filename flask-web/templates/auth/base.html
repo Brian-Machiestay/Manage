@@ -11,30 +11,8 @@
 
   <body>
     <section class="hero is-primary is-fullheight section-form-container">
-
-      <div class="hero-head">
-	<nav class="navbar">
-	  <div class="container">
-	    <div id="navbarMenuHeroA" class="navbar-menu">
-	      <div class="navbar-end">
-		</a>
-		<a href="{{ url_for('auth.login') }}" class="navbar-item">
-		  Login
-		</a>
-		<a href="{{ url_for('auth.signup') }}" class="navbar-item">
-		  Sign Up
-		</a>
-		<a href="{{ url_for('auth.logout') }}" class="navbar-item">
-		  Logout
-		</a>
-	      </div>
-	    </div>
-	  </div>
-	</nav>
-      </div>
-
       <div class="hero-body form-great-container">
-	<div class="container has-text-centered">
+	<div class="container has-text-centered form-child-container">
 	  {% block content %}
 	  {% endblock %}
 	</div>

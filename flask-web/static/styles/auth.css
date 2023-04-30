@@ -1,3 +1,5 @@
+/* styles for parent containers in base. html */
+
 body {
     display: flex;
     justify-content: center;
@@ -12,4 +14,30 @@ body {
     border-radius: 15px;
     border: 1px solid #E0E0E0;
     box-shadow: 2px 4px #E0E0E0;
+}
+
+.form-great-container {
+    width: 100%;
+    height: 100%;
+}
+
+.form-child-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* styles for login and signup page */
+
+.form-container {
+    padding-top: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.company-title {
+    font-family: Georgia, sans-serif;
+    font-size: 30pt;
 }
