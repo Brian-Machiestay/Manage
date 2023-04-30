@@ -33,6 +33,7 @@
         {% endfor %}
         <li class="list-group-item boardlinks create_board" data-toggle="modal" data-target="#createBoardWindow">+Create New Board</li>
         <li class="list-group-item last"><i id = "toggle" class="fa fa-toggle-off fa-2x" aria-hidden="true"></i></li>
+	<a href="/logout" class="list-group-item boardlinks">Logout</a>
         <li class="list-group-item side"><i id = "hide" class="fa fa-eye-slash" aria-hidden="true"></i> Hide sidebar</li>
       </ul>
     </aside>
@@ -40,7 +41,7 @@
     <aside class="task_aside">
       {% for item in bd.items %}
       <aside class="task_aside{{ loop.index }} task_aside-item" id="{{ item.id }}">
-        <p class='count_task'><i class="fa fa-circle" aria-hidden="true"></i> {{ item.name }} ({{ item.tasks|length }})</p>
+        <p class='count_task'><i class="fa fa-circle" aria-hidden="true"></i> {{ item.name }} (<span class="countTasks">{{ item.tasks|length }}</span>)</p>
 	{% for task in item.tasks %}
         <div class="task" data-toggle="modal" data-target="#viewTaskWindow" id="{{ task.id }}">
           <p class="task_head">{{ task.title }}</p>

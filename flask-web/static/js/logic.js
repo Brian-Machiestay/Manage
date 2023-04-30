@@ -59,6 +59,7 @@ async function createTask() {
 	    boardData[res['item_id']]['tasks'] = {}
 	}
 	boardData[res['item_id']]['tasks'][res['task_id']] = res['task']
+	console.log('data after task creation')
 	console.log(boardData);
 	$(`#${res['item_id']}`).append(
 	    ` <div class="task" data-toggle="modal" data-target="#viewTaskWindow" id="${res['task_id']}">
@@ -66,6 +67,10 @@ async function createTask() {
           <p class="subtask_status">0 out of 3 tasks</p>
         </div>`
 	)
+	const count = $(`#${res['item_id']} .countTasks`).text();
+	console.log(count);
+	$(`#${res['item_id']} .countTasks`).text(parseInt(count) + 1)
+	$('.task').click(viewTask);
 	$('.createTaskInfoma').text('task created successfully');
 	$('.createTaskInfoma').addClass('success');
 	$('.createTaskInfoma').removeClass('danger');
@@ -143,7 +148,7 @@ async function createColumn () {
 	    name: colName,
 	});
 	console.log(res);
-	const column = $(`<aside class="task_aside1 task_aside-item" id=${res.id}></aside>`).append(`<p><i class="fa fa-circle" aria-hidden="true"></i> ${colName} (0)</p>`);
+	const column = $(`<aside class="task_aside1 task_aside-item" id=${res.id}></aside>`).append(`<p><i class="fa fa-circle" aria-hidden="true"></i> ${colName} (<span class="countTasks">0</span>)</p>`);
 	column.insertBefore('#create_column');
 	$('.createColumnInfo').text('column created successfully');
 	$('.createColumnInfo').addClass('success');
