@@ -94,3 +94,8 @@ class DBStorage:
     def user_by_email(self, email):
         """return user with this email"""
         return self.__session.query(User).filter_by(email=email).first()
+
+
+    def user_by_id(self, id):
+        """return a user based on it's id"""
+        return self.__session.query(User).filter_by(id=id).first()

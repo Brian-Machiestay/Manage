@@ -7,11 +7,13 @@ import models
 from flask_cors import CORS
 from models.board import Board
 from models.items import Item
+from models.user import User
 from models.subtasks import Subtask
 from models.task import Task
 from api.v1.views import app_views
 import json
 from auth.view import auth_blueprint
+from flask_login import LoginManager, login_required, current_user
 
 
 app = Flask(__name__)
@@ -21,10 +23,21 @@ app.register_blueprint(app_views)
 app.register_blueprint(auth_blueprint)
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
+login_manager = LoginManager()
+login_manager.login_view = 'auth.login'
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    """tell login manager how to load a user"""
+    return models.storage.user_by_id(user_id)
 
 @app.route('/', strict_slashes=False)
+@login_required
 def root():
     """queries the root of this project"""
+    print(current_user.is_authenticated)
     uid = uuid4()
     count = Board.count_boards()
     boards = Board.boards()
