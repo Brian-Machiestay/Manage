@@ -10,12 +10,15 @@ from models.subtasks import Subtask
 from models.task import Task
 import json
 from api.v1.views import app_views
+from flask_login import current_user, login_required
 
 
 
 @app_views.route('/createBoard', methods=['POST'], strict_slashes=False)
+@login_required
 def createBoard():
     """create a new board"""
+    usr = current_user
     bd_name = request.form.get('name', None)
     if bd_name is None:
         res = make_response(jsonify({"error": "board name cannot be null"}))
@@ -24,7 +27,11 @@ def createBoard():
         res = make_response(jsonify({"error": "board name cannot be null"}))
         return res, 400
 
-    bd = Board(bd_name.strip())
+    exists = Board.board_by_name(usr.id, bd_name.strip())
+    if exists:
+        res = make_response(jsonify({"error": "This board already exists"}))
+        return res, 400
+    bd = Board(bd_name.strip(), usr.id)
     try:
         bd.save()
         print(bd)
@@ -32,13 +39,15 @@ def createBoard():
             'name': bd.name.replace(' ', '_')
         }))
     except(Exception):
-        res = make_response(jsonify({"error": "This board already exists"}))
+        res = make_response(jsonify({"error": "Cannot create board"}))
         return res, 400
 
 
 @app_views.route('/createColumn', methods=['POST'], strict_slashes=False)
+@login_required
 def createColumn():
     """create a new column"""
+    usr = current_user
     colname = request.form.get('name', None)
     boardname = request.form.get('board', None)
     if colname is None:

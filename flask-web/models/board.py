@@ -15,10 +15,11 @@ class Board(baseMod, Base):
     items = relationship('Item', back_populates='board')
     user = relationship('User', back_populates='boards')
 
-    def __init__(self, name, *args, **kwargs):
+    def __init__(self, name, user_id, *args, **kwargs):
         """initialize an instance of this class"""
         super().__init__(self, *args, **kwargs)
         self.name = name
+        self.user_id = user_id
 
 
     @classmethod

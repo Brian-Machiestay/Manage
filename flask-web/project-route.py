@@ -48,7 +48,7 @@ def root():
 @app.route('/boards', strict_slashes=False)
 @login_required
 def boards():
-    """render the all boards page"""
+    """render the all boards page for this user"""
     usr = current_user
     uid = uuid4()
     count = Board.count_boards(usr.id)
@@ -70,14 +70,8 @@ def getBoard(name):
     other_bd = Board.get_other_boards(usr.id, bd.name)
     uid = uuid4()
     count = Board.count_boards(usr.id)
-    return (render_template('board.html', bd=bd, other_bd=other_bd, uid=uid, count=count))
-
-@app.route('/boards')
-def allBoards():
-    """render all boards"""
-    boards = Board.boards()
-    count = Board.count_boards()
-    return (render_template('allboards.html', count=count, boards=boards))
+    return (render_template('board.html', bd=bd, other_bd=other_bd,
+                            uid=uid, count=count))
 
 
 if __name__ == "__main__":
