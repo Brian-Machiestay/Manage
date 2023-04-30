@@ -11,12 +11,13 @@ from models.subtasks import Subtask
 from models.task import Task
 from api.v1.views import app_views
 import json
-
+from auth.view import auth_blueprint
 
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
+app.register_blueprint(auth_blueprint)
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 
