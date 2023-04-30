@@ -6,13 +6,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, current_user, logout_user
 from models.user import User
 import models
+from uuid import uuid4
 
 auth_blueprint = Blueprint('auth', __name__)
 
 @auth_blueprint.route('/login')
 def login():
     """render the login page"""
-    return(render_template('auth/login.html'))
+    uid = uuid4()
+    return(render_template('auth/login.html', uid=uid))
 
 @auth_blueprint.route('/login', methods=['POST'])
 def login_post():
@@ -31,7 +33,8 @@ def login_post():
 @auth_blueprint.route('/signup')
 def signup():
     """render the signup page"""
-    return(render_template('auth/signup.html'))
+    uid = uuid4()
+    return(render_template('auth/signup.html', uid=uid))
 
 @auth_blueprint.route('/signup', methods=['POST'])
 def signup_post():
