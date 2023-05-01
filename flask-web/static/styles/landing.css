@@ -88,6 +88,8 @@ header .logo .logo_item1 {
     opacity: 1;
     height: 100vh;
     border-right: var(--sidebar-border);
+    margin-left: 0;
+    transition: margin-left 0.5s ease-out 0s;
 }
 
 .list-group {
@@ -147,6 +149,14 @@ a:hover {
     margin-bottom: auto;
     cursor: pointer;
 }
+
+.showSidebar {
+    margin-left: 0;
+}
+.hideSidebar {
+    margin-left: -250px;
+}
+
 
 /* task aside styles */
 .task_aside {
