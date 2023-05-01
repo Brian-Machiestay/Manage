@@ -214,13 +214,15 @@ function removeSubTask(e) {
 
 // hide show sidebar
 function hideSidebar() {
-    $('.side_bar').css('display', 'none');
+    $('.side_bar').addClass('hideSidebar');
+    $('.side_bar').removeClass('showSidebar');
     $('.showbar').css('display', 'block');
 }
 
 // show sidebar
 function showSidebar() {
-    $('.side_bar').css('display', 'block');
+    $('.side_bar').addClass('showSidebar');
+    $('.side_bar').removeClass('hideSidebar');
     $('.showbar').css('display', 'none');
 }
 
