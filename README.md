@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 ## Description  
-Manage is a full stack web application built to manage all kinds of projects. This application takes in user input for creating boards tasks and subtasks and saves them for future retrieval, a good feature for managing projects. The technologies, frameworks and languages used are, html, css, bootstrap, javascript ES6+, python, flask, mysql. Find the deployed frontend application [here](https://brian-machiestay.github.io/Manage/)
+Manage is a full stack web application built to manage all kinds of projects. This application takes in user input for creating boards tasks and subtasks and saves them for future retrieval, a good feature for managing projects. The technologies, frameworks and languages used are, html, css, bootstrap, javascript ES6+, python, flask, mysql. It also has user authentication as such, users would have to create an account to use it. Find the deployed frontend application [here](https://brian-machiestay.github.io/Manage/)
 
 ## Table of Content  
 
