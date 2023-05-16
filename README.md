@@ -23,8 +23,13 @@ Manage is a full stack web application built to manage all kinds of projects. Th
  ![screenshot](./assets/images/screen1.jpg)  
  ![screenshot](./assets/images/screen2.jpg)
  
-##  Demo  
-  ![demo vid](./assets/videos/demo.webm)  
+##  Demo 
+
+
+https://github.com/Brian-Machiestay/Manage/assets/84147230/fe382537-7f00-4d9b-b58d-e57217e6a177
+
+
+Find a better quality preview [here](./assets/videos/demo.webm) or [here](https://drive.google.com/file/d/1PjfK0MTLRxo_UinKyG99bkyQWYll4wzk/view?usp=sharing) 
 ## Usage  
   This application can be used and modified by anyone  
 ## License  
